@@ -3,93 +3,146 @@ import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Float, Environment } from "@react-three/drei";
 import * as THREE from "three";
 
-function NeuralCore() {
-  const meshRef = useRef<THREE.Mesh>(null);
-  const glowRef = useRef<THREE.Mesh>(null);
-
-  const uniforms = useMemo(
-    () => ({
-      uTime: { value: 0 },
-      uColor1: { value: new THREE.Color("hsl(250, 85%, 65%)") },
-      uColor2: { value: new THREE.Color("hsl(200, 95%, 55%)") },
-    }),
-    []
-  );
+/* Geometric face-like structure with neural lines */
+function FaceMesh() {
+  const groupRef = useRef<THREE.Group>(null);
+  const wireRef = useRef<THREE.Mesh>(null);
+  const innerRef = useRef<THREE.Mesh>(null);
 
   useFrame((state) => {
     const t = state.clock.elapsedTime;
-    uniforms.uTime.value = t;
-    if (meshRef.current) {
-      meshRef.current.rotation.y = t * 0.15;
-      meshRef.current.rotation.x = Math.sin(t * 0.1) * 0.1;
+    if (groupRef.current) {
+      groupRef.current.rotation.y = t * 0.08;
+      groupRef.current.rotation.x = Math.sin(t * 0.15) * 0.05;
     }
-    if (glowRef.current) {
-      glowRef.current.rotation.y = -t * 0.1;
-      const s = 1.8 + Math.sin(t * 0.5) * 0.1;
-      glowRef.current.scale.set(s, s, s);
+    if (wireRef.current) {
+      wireRef.current.rotation.y = -t * 0.12;
+    }
+    if (innerRef.current) {
+      const s = 0.85 + Math.sin(t * 0.8) * 0.03;
+      innerRef.current.scale.set(s, s, s);
     }
   });
 
   return (
-    <Float speed={1.5} rotationIntensity={0.2} floatIntensity={0.5}>
-      <group>
-        {/* Core sphere */}
-        <mesh ref={meshRef}>
-          <icosahedronGeometry args={[1, 4]} />
+    <Float speed={1.2} rotationIntensity={0.15} floatIntensity={0.4}>
+      <group ref={groupRef}>
+        {/* Outer wireframe - face-like icosahedron */}
+        <mesh ref={wireRef}>
+          <icosahedronGeometry args={[1.4, 3]} />
           <meshStandardMaterial
-            color="hsl(250, 85%, 65%)"
-            emissive="hsl(250, 85%, 45%)"
-            emissiveIntensity={0.5}
-            roughness={0.2}
-            metalness={0.8}
+            color="hsl(187, 100%, 50%)"
+            emissive="hsl(187, 100%, 35%)"
+            emissiveIntensity={0.4}
+            roughness={0.3}
+            metalness={0.7}
             wireframe
+            transparent
+            opacity={0.5}
           />
         </mesh>
 
         {/* Inner solid core */}
-        <mesh scale={0.7}>
-          <icosahedronGeometry args={[1, 2]} />
+        <mesh ref={innerRef}>
+          <icosahedronGeometry args={[0.8, 2]} />
           <meshStandardMaterial
-            color="hsl(200, 95%, 55%)"
-            emissive="hsl(200, 95%, 40%)"
-            emissiveIntensity={0.8}
+            color="hsl(254, 100%, 69%)"
+            emissive="hsl(254, 100%, 50%)"
+            emissiveIntensity={0.6}
             roughness={0.1}
             metalness={0.9}
             transparent
-            opacity={0.6}
+            opacity={0.4}
           />
         </mesh>
 
-        {/* Outer glow shell */}
-        <mesh ref={glowRef} scale={1.8}>
-          <icosahedronGeometry args={[1, 1]} />
-          <meshStandardMaterial
-            color="hsl(270, 80%, 70%)"
-            emissive="hsl(270, 80%, 50%)"
-            emissiveIntensity={0.3}
-            roughness={0.5}
-            metalness={0.5}
-            wireframe
-            transparent
-            opacity={0.15}
-          />
-        </mesh>
-
-        {/* Orbiting rings */}
-        {[0, 1, 2].map((i) => (
-          <mesh key={i} rotation={[Math.PI / 3 * i, Math.PI / 4 * i, 0]} scale={1.4 + i * 0.2}>
-            <torusGeometry args={[1, 0.005, 16, 100]} />
+        {/* Neural rings */}
+        {[0, 1, 2, 3].map((i) => (
+          <mesh
+            key={i}
+            rotation={[
+              (Math.PI / 4) * i + 0.3,
+              (Math.PI / 3) * i,
+              (Math.PI / 6) * i,
+            ]}
+            scale={1.6 + i * 0.15}
+          >
+            <torusGeometry args={[1, 0.004, 16, 120]} />
             <meshStandardMaterial
-              color="hsl(200, 95%, 55%)"
-              emissive="hsl(200, 95%, 55%)"
+              color={i % 2 === 0 ? "hsl(187, 100%, 50%)" : "hsl(254, 100%, 69%)"}
+              emissive={i % 2 === 0 ? "hsl(187, 100%, 50%)" : "hsl(254, 100%, 69%)"}
               emissiveIntensity={0.8}
               transparent
-              opacity={0.4 - i * 0.1}
+              opacity={0.35 - i * 0.06}
             />
           </mesh>
         ))}
+
+        {/* Floating data points */}
+        {Array.from({ length: 20 }).map((_, i) => {
+          const theta = (i / 20) * Math.PI * 2;
+          const r = 1.8 + Math.sin(i * 1.5) * 0.3;
+          return (
+            <mesh
+              key={`pt-${i}`}
+              position={[
+                Math.cos(theta) * r,
+                Math.sin(theta * 0.7) * 0.8,
+                Math.sin(theta) * r,
+              ]}
+            >
+              <sphereGeometry args={[0.015, 6, 6]} />
+              <meshStandardMaterial
+                color="hsl(187, 100%, 50%)"
+                emissive="hsl(187, 100%, 50%)"
+                emissiveIntensity={2}
+              />
+            </mesh>
+          );
+        })}
       </group>
     </Float>
+  );
+}
+
+function Particles() {
+  const pointsRef = useRef<THREE.Points>(null);
+
+  const particleData = useMemo(() => {
+    const count = 80;
+    const positions = new Float32Array(count * 3);
+    for (let i = 0; i < count; i++) {
+      positions[i * 3] = (Math.random() - 0.5) * 10;
+      positions[i * 3 + 1] = (Math.random() - 0.5) * 8;
+      positions[i * 3 + 2] = (Math.random() - 0.5) * 6;
+    }
+    return positions;
+  }, []);
+
+  useFrame((state) => {
+    if (pointsRef.current) {
+      pointsRef.current.rotation.y = state.clock.elapsedTime * 0.02;
+    }
+  });
+
+  return (
+    <points ref={pointsRef}>
+      <bufferGeometry>
+        <bufferAttribute
+          attach="attributes-position"
+          count={particleData.length / 3}
+          array={particleData}
+          itemSize={3}
+        />
+      </bufferGeometry>
+      <pointsMaterial
+        color="hsl(187, 100%, 50%)"
+        size={0.02}
+        transparent
+        opacity={0.5}
+        sizeAttenuation
+      />
+    </points>
   );
 }
 
@@ -98,29 +151,30 @@ function MouseParallax() {
 
   useFrame((state) => {
     const { pointer } = state;
-    camera.position.x = THREE.MathUtils.lerp(camera.position.x, pointer.x * 0.5, 0.05);
-    camera.position.y = THREE.MathUtils.lerp(camera.position.y, pointer.y * 0.3 + 0.5, 0.05);
+    camera.position.x = THREE.MathUtils.lerp(camera.position.x, pointer.x * 0.6, 0.04);
+    camera.position.y = THREE.MathUtils.lerp(camera.position.y, pointer.y * 0.4 + 0.3, 0.04);
     camera.lookAt(0, 0, 0);
   });
 
   return null;
 }
 
-export default function Hero3DCanvas() {
+export default function Hero3DScene() {
   return (
     <div className="absolute inset-0 w-full h-full">
       <Canvas
-        camera={{ position: [0, 0.5, 5], fov: 45 }}
+        camera={{ position: [0, 0.3, 5], fov: 45 }}
         dpr={[1, 1.5]}
         gl={{ antialias: true, alpha: true }}
         style={{ background: "transparent" }}
       >
-        <fog attach="fog" args={["hsl(230, 25%, 4%)", 4, 12]} />
-        <ambientLight intensity={0.3} />
-        <pointLight position={[5, 5, 5]} intensity={1} color="hsl(250, 85%, 65%)" />
-        <pointLight position={[-5, -3, 3]} intensity={0.5} color="hsl(200, 95%, 55%)" />
-        <pointLight position={[0, 3, -5]} intensity={0.3} color="hsl(270, 80%, 70%)" />
-        <NeuralCore />
+        <fog attach="fog" args={["hsl(228, 50%, 6%)", 4, 14]} />
+        <ambientLight intensity={0.25} />
+        <pointLight position={[4, 4, 4]} intensity={1.2} color="hsl(187, 100%, 50%)" />
+        <pointLight position={[-4, -2, 3]} intensity={0.6} color="hsl(254, 100%, 69%)" />
+        <pointLight position={[0, 3, -4]} intensity={0.3} color="hsl(180, 90%, 55%)" />
+        <FaceMesh />
+        <Particles />
         <MouseParallax />
         <Environment preset="night" />
       </Canvas>

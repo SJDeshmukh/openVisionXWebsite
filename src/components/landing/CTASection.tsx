@@ -1,12 +1,11 @@
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, MessageSquare } from "lucide-react";
 
-export default function CTA() {
+export default function CTASection() {
   return (
     <section className="relative py-40 section-padding overflow-hidden">
-      {/* Gradient background */}
       <div className="absolute inset-0 gradient-bg-cta" />
-      <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
+      <div className="absolute inset-0 neural-grid-bg" />
 
       <div className="relative max-w-3xl mx-auto text-center">
         <motion.div
@@ -15,31 +14,29 @@ export default function CTA() {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8 }}
         >
-          <p className="text-sm font-medium tracking-[0.2em] uppercase text-accent mb-6">
-            Ready to Start
-          </p>
           <h2 className="text-4xl md:text-6xl font-display font-bold text-foreground mb-8 text-balance">
-            The Future of Intelligence is{" "}
-            <span className="gradient-text">Open</span>
+            Build Intelligent Infrastructure with{" "}
+            <span className="gradient-text-blue">OpenVisionX</span>
           </h2>
           <p className="text-lg text-muted-foreground mb-12 max-w-xl mx-auto text-balance">
-            Join thousands of teams building the next generation of AI-powered products with OpenVisionX.
+            AI-powered institutional infrastructure that automates identity verification and
+            optimizes mobility systems in real time.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
               className="glow-button flex items-center gap-2 text-lg"
             >
-              Start Building <ArrowRight className="w-5 h-5" />
+              Schedule Demo <ArrowRight className="w-5 h-5" />
             </motion.button>
             <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="glow-button-outline text-lg"
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+              className="glow-button-outline flex items-center gap-2 text-lg"
             >
-              Talk to Sales
+              <MessageSquare className="w-5 h-5" /> Talk to Sales
             </motion.button>
           </div>
         </motion.div>
