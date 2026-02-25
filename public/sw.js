@@ -1,8 +1,5 @@
-const CACHE_NAME = "ovx-cache-v1";
+const CACHE_NAME = "ovx-cache-v2";
 const PRECACHE_URLS = [
-  "/",
-  "/index.html",
-  "/favicon.ico",
   "/openVisionXLogo.png",
   "/ai_first.gif",
   "/security.gif",
@@ -33,6 +30,20 @@ self.addEventListener("fetch", (event) => {
   const url = new URL(req.url);
   if (url.origin !== self.location.origin) return;
   const dest = req.destination;
+  const accept = req.headers.get("accept") || "";
+
+  // Never cache HTML navigations; always fetch latest
+  if (req.mode === "navigate" || accept.includes("text/html") || url.pathname.endsWith(".html")) {
+    event.respondWith(fetch(req));
+    return;
+  }
+
+  // Avoid caching favicons to prevent stale branding
+  if (url.pathname === "/favicon.ico" || url.pathname.endsWith(".ico")) {
+    event.respondWith(fetch(req));
+    return;
+  }
+
   if (req.headers.has("range")) {
     event.respondWith(fetch(req));
     return;
