@@ -26,12 +26,12 @@ export default function RouteBuilder() {
           transition={{ duration: 0.7 }}
           className="text-center mb-16"
         >
-          <p className="text-sm font-medium tracking-[0.2em] uppercase text-primary mb-4">
+          <p className="text-sm font-semibold tracking-[0.3em] uppercase text-primary mb-3">
             Route Management
           </p>
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-6">
-            Design Smarter Routes.{" "}
-            <span className="gradient-text-blue">Manage Seamlessly.</span>
+          <h2 className="text-4xl md:text-5xl font-display font-extrabold text-foreground mb-6 tracking-[-0.03em]">
+            Design Hard Limits.{" "}
+            <span className="gradient-text-blue">Manage Every Route.</span>
           </h2>
         </motion.div>
 
@@ -42,6 +42,7 @@ export default function RouteBuilder() {
             whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1 }}
+            whileHover={{ y: -8 }}
             className="flex justify-center"
           >
             <div className="relative" style={{ perspective: "1000px" }}>
@@ -106,6 +107,8 @@ export default function RouteBuilder() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
+                  whileHover={{ x: 6, scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
                   className="flex items-center gap-3"
                 >
                   <div className="w-6 h-6 rounded-full bg-primary/15 flex items-center justify-center shrink-0">

@@ -6,48 +6,90 @@
 
 @layer base {
   :root {
-    /* Deep Navy base */
-    --background: 228 50% 6%;
-    --foreground: 220 20% 95%;
+    --background: 0 0% 98%;
+    --foreground: 228 18% 12%;
 
-    --card: 228 45% 9%;
-    --card-foreground: 220 20% 95%;
+    --card: 0 0% 100%;
+    --card-foreground: 228 18% 12%;
 
-    --popover: 228 45% 9%;
-    --popover-foreground: 220 20% 95%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 228 18% 12%;
 
-    /* Electric Blue primary */
-    --primary: 187 100% 50%;
-    --primary-foreground: 228 50% 6%;
+    --primary: 187 100% 52%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 228 35% 14%;
-    --secondary-foreground: 220 20% 90%;
+    --secondary: 228 12% 90%;
+    --secondary-foreground: 228 18% 12%;
 
-    --muted: 228 30% 16%;
-    --muted-foreground: 220 15% 55%;
+    --muted: 228 18% 90%;
+    --muted-foreground: 228 12% 35%;
 
-    /* Neon Purple accent */
-    --accent: 254 100% 69%;
+    --accent: 274 100% 60%;
     --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 84% 60%;
+    --destructive: 0 86% 52%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 228 30% 14%;
-    --input: 228 30% 14%;
-    --ring: 187 100% 50%;
+    --border: 228 18% 84%;
+    --input: 228 18% 84%;
+    --ring: 187 100% 55%;
 
     --radius: 1rem;
 
-    /* Custom glow tokens */
-    --glow-blue: 187 100% 50%;
-    --glow-purple: 254 100% 69%;
-    --glow-cyan: 180 90% 55%;
-    --surface-glass: 228 40% 10%;
-    --navy-deep: 228 50% 6%;
-    --navy-mid: 228 40% 10%;
-    --soft-white: 220 20% 97%;
+    --glow-blue: 187 100% 55%;
+    --glow-purple: 274 100% 68%;
+    --glow-cyan: 180 95% 58%;
+    --surface-glass: 0 0% 100%;
+    --navy-deep: 228 18% 12%;
+    --navy-mid: 228 14% 20%;
+    --soft-white: 0 0% 100%;
+    --glow-alpha: 0.28;
+    --illum-color: 0 0% 0%;
+    --illum-blend: multiply;
   }
+}
+
+.dark {
+  --background: 0 0% 0%;
+  --foreground: 210 25% 96%;
+
+  --card: 228 45% 7%;
+  --card-foreground: 210 25% 96%;
+
+  --popover: 228 45% 7%;
+  --popover-foreground: 210 25% 96%;
+
+  --primary: 187 100% 52%;
+  --primary-foreground: 228 60% 4%;
+
+  --secondary: 228 40% 14%;
+  --secondary-foreground: 210 20% 92%;
+
+  --muted: 228 30% 16%;
+  --muted-foreground: 220 12% 52%;
+
+  --accent: 274 100% 68%;
+  --accent-foreground: 0 0% 100%;
+
+  --destructive: 0 86% 58%;
+  --destructive-foreground: 0 0% 100%;
+
+  --border: 228 32% 18%;
+  --input: 228 32% 18%;
+  --ring: 187 100% 55%;
+
+  --radius: 1rem;
+
+  --glow-blue: 187 100% 55%;
+  --glow-purple: 274 100% 68%;
+  --glow-cyan: 180 95% 58%;
+  --surface-glass: 228 45% 8%;
+  --navy-deep: 228 60% 3%;
+  --navy-mid: 228 45% 8%;
+  --soft-white: 210 25% 97%;
+  --glow-alpha: 0.28;
+  --illum-color: 0 0% 100%;
+  --illum-blend: screen;
 }
 
 @layer base {
@@ -118,6 +160,13 @@
     background:
       radial-gradient(ellipse 80% 50% at 50% 0%, hsl(var(--glow-blue) / 0.12) 0%, transparent 60%),
       radial-gradient(ellipse 60% 40% at 30% 20%, hsl(var(--glow-purple) / 0.08) 0%, transparent 50%);
+  }
+  
+  .mouse-illum {
+    mix-blend-mode: var(--illum-blend);
+  }
+  .nav-text {
+    color: hsl(var(--nav-text));
   }
 
   .gradient-bg-cta {
@@ -195,5 +244,14 @@
 
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
+  }
+
+  .cursor-none * {
+    cursor: none !important;
+  }
+  
+  .theme-light .stat-bubble,
+  .theme-light .stat-bubble * {
+    color: hsl(var(--soft-white)) !important;
   }
 }

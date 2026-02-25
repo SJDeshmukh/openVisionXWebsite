@@ -1,12 +1,11 @@
 import { motion } from "framer-motion";
-import { Shield, Zap, Brain, Puzzle, Rocket } from "lucide-react";
 
 const reasons = [
-  { icon: Brain, title: "AI-First Architecture", desc: "Every component built around machine intelligence." },
-  { icon: Shield, title: "Institutional-Grade Security", desc: "SOC 2, encrypted biometrics, zero-trust." },
-  { icon: Zap, title: "Real-Time Intelligence", desc: "Sub-second processing at institutional scale." },
-  { icon: Puzzle, title: "Seamless Integration", desc: "REST APIs, webhooks, and native SDKs." },
-  { icon: Rocket, title: "Future-Ready Expansion", desc: "Modular design for evolving requirements." },
+  { gif: "/ai_first.gif", title: "AI-First Architecture", desc: "Every component built around machine intelligence." },
+  { gif: "/security.gif", title: "Institutional-Grade Security", desc: "SOC 2, encrypted biometrics, zero-trust." },
+  { gif: "/real_time.gif", title: "Real-Time Intelligence", desc: "Sub-second processing at institutional scale." },
+  { gif: "/seamless.gif", title: "Seamless Integration", desc: "REST APIs, webhooks, and native SDKs." },
+  { gif: "/iron_man_future.gif", title: "Future-Ready Expansion", desc: "Modular design for evolving requirements." },
 ];
 
 const metrics = [
@@ -27,17 +26,17 @@ export default function WhySection() {
           transition={{ duration: 0.7 }}
           className="text-center mb-20"
         >
-          <p className="text-sm font-medium tracking-[0.2em] uppercase text-primary mb-4">
+          <p className="text-sm font-semibold tracking-[0.3em] uppercase text-primary mb-3">
             Why Us
           </p>
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-6">
+          <h2 className="text-4xl md:text-5xl font-display font-extrabold text-foreground mb-6 tracking-[-0.03em]">
             Why{" "}
-            <span className="gradient-text-blue">OpenVisionX</span>
+            <span className="gradient-text-blue">OpenVisionX.</span>
           </h2>
         </motion.div>
 
         {/* Reason cards */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-20">
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-14">
           {reasons.map((r, i) => (
             <motion.div
               key={r.title}
@@ -45,13 +44,15 @@ export default function WhySection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.08 }}
-              className="glass-panel-hover p-7 group"
+              whileHover={{ y: -6, scale: 1.03 }}
+              whileTap={{ scale: 0.98 }}
+              className="glass-panel-hover p-4 group text-center"
             >
-              <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                <r.icon className="w-5 h-5 text-primary" />
+              <div className="mx-auto mb-3 w-16 h-16 md:w-18 md:h-18 rounded-full overflow-hidden border border-border/60 bg-secondary/40 shadow-[0_0_30px_hsl(var(--glow-blue)/0.15)]">
+                <img src={r.gif} alt={r.title} className="w-full h-full object-cover" loading="eager" />
               </div>
-              <h3 className="font-display font-semibold text-foreground mb-2">{r.title}</h3>
-              <p className="text-sm text-muted-foreground">{r.desc}</p>
+              <h3 className="font-display font-semibold text-foreground mb-1">{r.title}</h3>
+              <p className="text-xs text-muted-foreground">{r.desc}</p>
             </motion.div>
           ))}
         </div>

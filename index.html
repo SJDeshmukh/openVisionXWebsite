@@ -17,10 +17,35 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@Lovable" />
     <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    
+    <!-- Preload architecture sequence assets to prevent blank frames on scroll -->
+    <link rel="preload" as="image" href="/user.gif" />
+    <link rel="preload" as="image" href="/ai_engine.gif" />
+    <link rel="preload" as="image" href="/cloud.gif" />
+    <link rel="preload" as="image" href="/dashboard.gif" />
+    <link rel="preload" as="image" href="/mobile.gif" />
+    <!-- Preload why-section gifs for smoother entry -->
+    <link rel="preload" as="image" href="/ai_first.gif" />
+    <link rel="preload" as="image" href="/security.gif" />
+    <link rel="preload" as="image" href="/real_time.gif" />
+    <link rel="preload" as="image" href="/seamless.gif" />
+    <link rel="preload" as="image" href="/iron_man_future.gif" />
+    <!-- Brand asset -->
+    <link rel="preload" as="image" href="/tapinx-logo.svg" />
+    <link rel="preload" as="image" href="/routeX_logo%207.43.16%E2%80%AFAM.png" />
   </head>
 
   <body>
     <div id="root"></div>
+    <script>
+      (function () {
+        if ("serviceWorker" in navigator) {
+          const isLocal = ["localhost", "127.0.0.1"].includes(location.hostname);
+          if (!isLocal) {
+            navigator.serviceWorker.register("/sw.js").catch(() => {});
+          }
+        }
+      })();
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
-</html>

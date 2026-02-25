@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="RouteX logo">
+  <defs>
+    <linearGradient id="rxg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#7A7DFF"/>
+      <stop offset="50%" stop-color="#C05BFF"/>
+      <stop offset="100%" stop-color="#FF5C7A"/>
+    </linearGradient>
+  </defs>
+  <rect width="256" height="256" fill="none"/>
+  <g>
+    <path d="M128 20c-50 0-90 40.3-90 90.1C38 174 128 236 128 236s90-62 90-125.9C218 60.3 178 20 128 20Z"
+          fill="url(#rxg)" stroke="#121633" stroke-width="10" />
+    <circle cx="128" cy="110" r="16" fill="#121633"/>
+    <path d="M76 124c24-24 80-24 104 0" fill="none" stroke="#121633" stroke-width="10" stroke-linecap="round"/>
+    <circle cx="92" cy="114" r="10" fill="#fff"/>
+    <circle cx="164" cy="114" r="10" fill="#fff"/>
+    <circle cx="92" cy="114" r="4" fill="#121633"/>
+    <circle cx="164" cy="114" r="4" fill="#121633"/>
+  </g>
+</svg>

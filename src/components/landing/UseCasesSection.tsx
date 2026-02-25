@@ -15,16 +15,16 @@ export default function UseCasesSection() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: false, margin: "-100px" }}
           transition={{ duration: 0.7 }}
           className="text-center mb-16"
         >
-          <p className="text-sm font-medium tracking-[0.2em] uppercase text-primary mb-4">
+          <p className="text-sm font-semibold tracking-[0.3em] uppercase text-primary mb-3">
             Use Cases
           </p>
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground">
-            Built for Every{" "}
-            <span className="gradient-text-blue">Institution</span>
+          <h2 className="text-4xl md:text-5xl font-display font-extrabold text-foreground tracking-[-0.03em]">
+            Built for{" "}
+            <span className="gradient-text-blue">Every Institution.</span>
           </h2>
         </motion.div>
 
@@ -34,9 +34,10 @@ export default function UseCasesSection() {
               key={uc.title}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false }}
               transition={{ duration: 0.6, delay: i * 0.1 }}
-              whileHover={{ rotateY: 5, rotateX: -3 }}
+              whileHover={{ y: -6, rotateY: 5, rotateX: -3, scale: 1.03 }}
+              whileTap={{ scale: 0.98 }}
               className="glass-panel-hover p-7 text-center group"
               style={{ perspective: "600px" }}
             >
