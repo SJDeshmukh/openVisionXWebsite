@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="AttendX logo">
+  <defs>
+    <linearGradient id="axg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#4ADE80"/>
+      <stop offset="50%" stop-color="#2DD4BF"/>
+      <stop offset="100%" stop-color="#3B82F6"/>
+    </linearGradient>
+  </defs>
+  <rect width="256" height="256" fill="none"/>
+  <g>
+    <!-- Background circle with gradient -->
+    <rect x="64" y="32" width="128" height="192" rx="20"
+          fill="url(#axg)" stroke="#121633" stroke-width="10" />
+    <!-- Screen -->
+    <rect x="76" y="44" width="104" height="168" rx="8" fill="#121633" opacity="0.2" />
+    <!-- Mobile home button -->
+    <circle cx="128" cy="210" r="10" fill="#121633" />
+    <circle cx="128" cy="210" r="4" fill="#fff" opacity="0.5" />
+    <!-- Checkmark icon -->
+    <path d="M100 128 L120 148 L156 108" fill="none" stroke="#fff" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+</svg>

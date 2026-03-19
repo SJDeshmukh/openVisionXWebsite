@@ -1,4 +1,4 @@
-import { Suspense, lazy, useState, MouseEvent } from "react";
+import { Suspense, lazy } from "react";
 import { motion, useScroll } from "framer-motion";
 import Navbar from "@/components/landing/Navbar";
 import ThemeToggle from "@/components/ThemeToggle";
@@ -6,6 +6,7 @@ import HeroSection from "@/components/landing/HeroSection";
 import ProblemSection from "@/components/landing/ProblemSection";
 import SolutionSection from "@/components/landing/SolutionSection";
 import FaceAttendance from "@/components/landing/FaceAttendance";
+import AttendX from "@/components/landing/AttendX";
 import BusTracking from "@/components/landing/BusTracking";
 import Architecture from "@/components/landing/Architecture";
 import WhySection from "@/components/landing/WhySection";
@@ -36,61 +37,16 @@ const ScrollProgress = () => {
   );
 };
 
-type CursorPos = { x: number; y: number };
 
-const GlobalMouseOverlay = ({ cursorPos }: { cursorPos: CursorPos }) => {
-  return (
-    <>
-      <div className="pointer-events-none absolute inset-0 neural-grid-bg opacity-25" />
-    </>
-  );
-};
-
-const CustomCursor = ({ cursorPos }: { cursorPos: CursorPos }) => {
-  return (
-    <motion.div
-      className="pointer-events-none absolute z-50 hidden md:block -translate-x-1/2 -translate-y-1/2"
-      style={{
-        left: `${cursorPos.x}%`,
-        top: `${cursorPos.y}%`,
-      }}
-    >
-      <motion.div
-        animate={{ scale: [1, 1.4, 1] }}
-        transition={{ duration: 1.1, repeat: Infinity, ease: "easeInOut" }}
-        className="w-8 h-8 rounded-full"
-        style={{
-          border: "1px solid hsl(var(--illum-color))",
-          background: "hsl(var(--illum-color) / 0.1)",
-          boxShadow: "0 0 30px hsl(var(--illum-color) / 0.55)",
-        }}
-      />
-    </motion.div>
-  );
-};
 
 const Index = () => {
-  const [cursorPos, setCursorPos] = useState<CursorPos>({ x: 50, y: 30 });
-
-  const handleMouseMove = (event: MouseEvent<HTMLDivElement>) => {
-    const rect = event.currentTarget.getBoundingClientRect();
-    const x = ((event.clientX - rect.left) / rect.width) * 100;
-    const y = ((event.clientY - rect.top) / rect.height) * 100;
-    setCursorPos({
-      x: Math.max(0, Math.min(100, x)),
-      y: Math.max(0, Math.min(100, y)),
-    });
-  };
-
   return (
     <div
-      className="relative bg-background min-h-screen overflow-x-hidden cursor-none"
-      onMouseMove={handleMouseMove}
+      className="relative bg-background min-h-screen overflow-x-hidden"
     >
       <ScrollProgress />
       <div className="pointer-events-none absolute inset-0 gradient-bg-hero -z-10" />
-      <GlobalMouseOverlay cursorPos={cursorPos} />
-      <CustomCursor cursorPos={cursorPos} />
+      <div className="pointer-events-none absolute inset-0 neural-grid-bg opacity-25" />
       <div className="fixed top-3 right-3 z-[60]">
         <ThemeToggle />
       </div>
@@ -113,6 +69,9 @@ const Index = () => {
       {/* Face Attendance */}
       <FaceAttendance />
 
+      {/* AttendX Mobile Attendance */}
+      <AttendX />
+
       {/* Bus + Route Management */}
       <BusTracking />
 
@@ -133,7 +92,7 @@ const Index = () => {
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-2">
             <div className="w-6 h-6 rounded overflow-hidden">
-              <img src="/Screenshot%202026-02-21%20at%209.03.35%E2%80%AFAM.png" alt="OpenVisionX logo" className="w-full h-full object-cover" />
+              <img src="/openVisionXLogo.png" alt="OpenVisionX logo" className="w-full h-full object-cover" />
             </div>
             <span className="font-display font-bold text-foreground">OpenVisionX</span>
           </div>

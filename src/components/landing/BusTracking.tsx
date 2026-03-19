@@ -109,7 +109,7 @@ export default function BusTracking() {
         >
             <div className="flex items-center justify-center mb-3">
             <div className="w-14 h-14 rounded-xl overflow-hidden border border-primary/40 bg-background/60 shadow-[0_0_30px_hsl(var(--glow-blue)/0.25)]">
-              <img src="/routeX_logo%207.43.16%E2%80%AFAM.png" alt="RouteX Logo" className="w-full h-full object-contain" />
+              <img src="/routex-logo.png" alt="RouteX Logo" className="w-full h-full object-contain p-1.5" />
             </div>
           </div>
           <p className="text-xs sm:text-sm font-semibold text-primary mb-4 text-center">

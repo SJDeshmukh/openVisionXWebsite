@@ -2,10 +2,10 @@ import { motion } from "framer-motion";
 import { Scan, Bus, LayoutDashboard, Smartphone } from "lucide-react";
 
 const connections = [
-  { icon: Scan, label: "TapInX Attendance" },
-  { icon: Bus, label: "RouteX Bus Tracking" },
-  { icon: LayoutDashboard, label: "Dashboard" },
-  { icon: Smartphone, label: "Mobile App" },
+  { icon: Scan, label: "TapInX" },
+  { icon: Smartphone, label: "AttendX" },
+  { icon: Bus, label: "RouteX" },
+  { icon: LayoutDashboard, label: "Command" },
 ];
 
 const products = [
@@ -13,13 +13,19 @@ const products = [
     label: "TapInX",
     metric: "0.5s",
     metricLabel: "check-in",
-    description: "Touchless verification that writes to your TapInX attendance system in real time.",
+    description: "Multi-factor touchless verification that prevents buddy punching and unauthorized entry.",
+  },
+  {
+    label: "AttendX",
+    metric: "99.8%",
+    metricLabel: "Avg Accuracy",
+    description: "Class-wide bulk attendance using Face Regeneration AI for precise deep-field recognition.",
   },
   {
     label: "RouteX",
-    metric: "100%",
-    metricLabel: "Fleet visibility",
-    description: "Live GPS, punctuality scores, route health and optimization for every vehicle.",
+    metric: "Live",
+    metricLabel: "Visibility",
+    description: "End-to-end fleet tracking with aggressive ETA enforcement and occupancy analytics.",
   },
 ];
 
@@ -112,7 +118,7 @@ export default function SolutionSection() {
             Products
           </motion.p>
 
-          <div className="grid md:grid-cols-2 gap-10">
+          <div className="grid md:grid-cols-3 gap-10">
             {products.map((p, index) => (
               <motion.div
                 key={p.label}
@@ -134,9 +140,14 @@ export default function SolutionSection() {
                       <img src="/tapinx-logo.svg" alt="TapInX" className="w-full h-full object-contain" />
                     </div>
                   )}
+                  {p.label === "AttendX" && (
+                    <div className="w-10 h-10 rounded-lg overflow-hidden border border-primary/40 bg-background/60 shrink-0 shadow-[0_0_24px_hsl(var(--glow-blue)/0.2)]">
+                      <img src="/attendx-logo.svg" alt="AttendX" className="w-full h-full object-contain p-1" />
+                    </div>
+                  )}
                   {p.label === "RouteX" && (
                     <div className="w-10 h-10 rounded-lg overflow-hidden border border-primary/40 bg-background/60 shrink-0 shadow-[0_0_24px_hsl(var(--glow-blue)/0.2)]">
-                      <img src="/routeX_logo%207.43.16%E2%80%AFAM.png" alt="RouteX" className="w-full h-full object-contain" />
+                      <img src="/routex-logo.png" alt="RouteX" className="w-full h-full object-contain p-1.5" />
                     </div>
                   )}
                   <h3 className="font-display font-extrabold text-2xl md:text-3xl tracking-[-0.04em] text-foreground gradient-text-blue transition-transform duration-200 group-hover:scale-105">
