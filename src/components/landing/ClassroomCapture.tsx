@@ -12,13 +12,13 @@ interface Student {
 }
 
 const generateStudents = (): Student[] => [
-  { id: 1, x: 25, y: 35, name: "S. ROBERTS", status: "pending", distance: "far" },
-  { id: 2, x: 75, y: 32, name: "A. CHEN", status: "pending", distance: "far" },
-  { id: 3, x: 50, y: 48, name: "M. GARCIA", status: "pending", distance: "mid" },
-  { id: 4, x: 18, y: 62, name: "J. SMITH", status: "pending", distance: "mid" },
-  { id: 5, x: 82, y: 58, name: "L. WONG", status: "pending", distance: "mid" },
-  { id: 6, x: 35, y: 82, name: "K. PATEL", status: "pending", distance: "near" },
-  { id: 7, x: 68, y: 78, name: "D. JONES", status: "pending", distance: "near" },
+  { id: 1, x: 28, y: 42, name: "S. ROBERTS", status: "pending", distance: "far" },
+  { id: 2, x: 72, y: 40, name: "A. CHEN", status: "pending", distance: "far" },
+  { id: 3, x: 50, y: 52, name: "M. GARCIA", status: "pending", distance: "mid" },
+  { id: 4, x: 22, y: 65, name: "J. SMITH", status: "pending", distance: "mid" },
+  { id: 5, x: 78, y: 62, name: "L. WONG", status: "pending", distance: "mid" },
+  { id: 6, x: 38, y: 78, name: "K. PATEL", status: "pending", distance: "near" },
+  { id: 7, x: 62, y: 75, name: "D. JONES", status: "pending", distance: "near" },
 ];
 
 const StudentAvatar = ({ student, isScanning }: { student: Student; isScanning: boolean }) => {
@@ -26,40 +26,36 @@ const StudentAvatar = ({ student, isScanning }: { student: Student; isScanning: 
    
    return (
       <div className="relative flex flex-col items-center">
-         {/* Identification Label - Adjusted positioning to avoid HUD overlap */}
-         <AnimatePresence>
-            {student.status !== "pending" && (
-               <motion.div
-                  initial={{ opacity: 0, scale: 0.8, y: 5 }}
-                  animate={{ opacity: 1, scale: 1, y: 0 }}
-                  exit={{ opacity: 0 }}
-                  className="absolute -top-12 whitespace-nowrap z-30"
+         {/* Identification Label - Always visible with status-based styling */}
+         <div className="absolute -top-12 whitespace-nowrap z-30">
+            {student.status === "pending" && (
+               <div className="bg-slate-800/10 backdrop-blur-sm text-[7px] px-2 py-0.5 rounded-full border border-white/5 text-slate-500 font-bold uppercase tracking-widest opacity-40">
+                  {student.name}
+               </div>
+            )}
+            {student.status === "scanning" && (
+               <div className="bg-primary/20 backdrop-blur-md text-[8px] px-2 py-1 rounded-full border border-primary/50 text-primary font-bold uppercase tracking-[0.15em] flex items-center gap-1.5 shadow-[0_0_20px_rgba(74,222,128,0.2)]">
+                  <motion.div animate={{ rotate: 360 }} transition={{ duration: 2, repeat: Infinity, ease: "linear" }}>
+                     <Target className="w-2.5 h-2.5" />
+                  </motion.div>
+                  {student.name} // ANALYSING
+               </div>
+            )}
+            {student.status === "regenerating" && (
+               <div className="bg-blue-500/20 backdrop-blur-md text-[8px] px-2 py-1 rounded-full border border-blue-400/50 text-blue-400 font-bold uppercase tracking-[0.15em] flex items-center gap-1.5 shadow-[0_0_20px_rgba(59,130,246,0.3)]">
+                  <Sparkles className="w-2.5 h-2.5 animate-pulse" /> {student.name}
+               </div>
+            )}
+            {student.status === "verified" && (
+               <motion.div 
+                  initial={{ scale: 0.8, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  className="bg-green-500/20 backdrop-blur-md text-[8px] px-2.5 py-1 rounded-full border border-green-400/50 text-green-400 font-bold uppercase tracking-[0.15em] flex items-center gap-1.5 shadow-[0_0_20px_rgba(34,197,94,0.3)]"
                >
-                  {student.status === "scanning" && (
-                     <div className="bg-primary/20 backdrop-blur-md text-[8px] px-2 py-1 rounded-full border border-primary/50 text-primary font-bold uppercase tracking-[0.15em] flex items-center gap-1.5 shadow-[0_0_20px_rgba(74,222,128,0.2)]">
-                        <motion.div animate={{ rotate: 360 }} transition={{ duration: 2, repeat: Infinity, ease: "linear" }}>
-                           <Target className="w-2.5 h-2.5" />
-                        </motion.div>
-                        Analysing...
-                     </div>
-                  )}
-                  {student.status === "regenerating" && (
-                     <div className="bg-blue-500/20 backdrop-blur-md text-[8px] px-2 py-1 rounded-full border border-blue-400/50 text-blue-400 font-bold uppercase tracking-[0.15em] flex items-center gap-1.5 shadow-[0_0_20px_rgba(59,130,246,0.3)]">
-                        <Sparkles className="w-2.5 h-2.5 animate-pulse" /> Regen AI
-                     </div>
-                  )}
-                  {student.status === "verified" && (
-                     <motion.div 
-                        initial={{ scale: 0.5, opacity: 0 }}
-                        animate={{ scale: 1, opacity: 1 }}
-                        className="bg-green-500/20 backdrop-blur-md text-[8px] px-2.5 py-1 rounded-full border border-green-400/50 text-green-400 font-bold uppercase tracking-[0.15em] flex items-center gap-1.5 shadow-[0_0_20px_rgba(34,197,94,0.3)]"
-                     >
-                        <UserCheck className="w-2.5 h-2.5" /> {student.name}
-                     </motion.div>
-                  )}
+                  <UserCheck className="w-2.5 h-2.5" /> {student.name}
                </motion.div>
             )}
-         </AnimatePresence>
+         </div>
 
          {/* Human Silhouette - Refined shapes and fills */}
          <motion.div 
@@ -245,7 +241,7 @@ export default function ClassroomCapture() {
       </motion.div>
 
       {/* Main Student Visualization */}
-      <div className="absolute inset-0 px-20 pt-16 pb-12">
+      <div className="absolute inset-0 px-24 pt-28 pb-24 relative">
          {students.map((student) => (
            <div
              key={student.id}
