@@ -43,7 +43,7 @@ export default function AttendX() {
         >
            <div className="flex items-center justify-center mb-4">
               <div className="w-14 h-14 rounded-xl overflow-hidden border border-primary/40 bg-background/60 shadow-[0_0_30px_hsl(var(--glow-blue)/0.25)] p-2">
-                 <img src="/attendx-logo.svg" alt="AttendX Logo" className="w-full h-full object-contain" />
+                 <img src="/attendX.png" alt="AttendX Logo" className="w-full h-full object-contain" />
               </div>
            </div>
            <h2 className="font-display font-extrabold text-3xl md:text-4xl text-primary mb-2">

@@ -142,7 +142,7 @@ export default function SolutionSection() {
                   )}
                   {p.label === "AttendX" && (
                     <div className="w-10 h-10 rounded-lg overflow-hidden border border-primary/40 bg-background/60 shrink-0 shadow-[0_0_24px_hsl(var(--glow-blue)/0.2)]">
-                      <img src="/attendx-logo.svg" alt="AttendX" className="w-full h-full object-contain p-1" />
+                      <img src="/attendX.png" alt="AttendX" className="w-full h-full object-contain p-1" />
                     </div>
                   )}
                   {p.label === "RouteX" && (
