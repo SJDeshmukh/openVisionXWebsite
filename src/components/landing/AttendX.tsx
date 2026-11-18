@@ -27,7 +27,7 @@ const features = [
 
 export default function AttendX() {
   return (
-    <section id="attendx" className="relative py-32 overflow-hidden bg-slate-950">
+    <section id="attendx" className="relative py-32 overflow-hidden bg-secondary/25 dark:bg-slate-950">
       {/* Background Decorative elements */}
       <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] -z-10" />
       <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-[120px] -z-10" />
@@ -86,14 +86,14 @@ export default function AttendX() {
                   transition={{ delay: 0.2 + index * 0.1 }}
                   className="flex gap-5 group"
                 >
-                  <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-slate-950 transition-all duration-500 shadow-xl">
+                  <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-card/80 border border-border flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-500 shadow-xl">
                     {feature.icon}
                   </div>
                   <div className="space-y-1.5">
-                    <h4 className="font-black text-white group-hover:text-primary transition-colors duration-300 tracking-tight">
+                    <h4 className="font-black text-foreground group-hover:text-primary transition-colors duration-300 tracking-tight">
                       {feature.title}
                     </h4>
-                    <p className="text-sm text-slate-500 leading-tight">
+                    <p className="text-sm text-muted-foreground leading-tight">
                       {feature.description}
                     </p>
                   </div>
@@ -119,11 +119,11 @@ export default function AttendX() {
             <motion.div 
                animate={{ y: [0, -10, 0] }}
                transition={{ duration: 5, repeat: Infinity }}
-               className="absolute -top-10 -right-5 glass-panel py-3 px-6 border-white/10 shadow-2xl backdrop-blur-2xl"
+               className="absolute -top-10 -right-5 glass-panel py-3 px-6 shadow-2xl backdrop-blur-2xl"
             >
                <div className="flex items-center gap-3">
                   <div className="w-1.5 h-1.5 rounded-full bg-primary animate-ping" />
-                  <span className="text-[10px] font-black text-white uppercase tracking-widest">Processing Node 04: ON</span>
+                  <span className="text-[10px] font-black text-foreground uppercase tracking-widest">Processing Node 04: ON</span>
                </div>
             </motion.div>
           </motion.div>

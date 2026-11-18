@@ -1,7 +1,6 @@
 import { Suspense, lazy } from "react";
 import { motion, useScroll } from "framer-motion";
 import Navbar from "@/components/landing/Navbar";
-import ThemeToggle from "@/components/ThemeToggle";
 import HeroSection from "@/components/landing/HeroSection";
 import ProblemSection from "@/components/landing/ProblemSection";
 import SolutionSection from "@/components/landing/SolutionSection";
@@ -47,9 +46,6 @@ const Index = () => {
       <ScrollProgress />
       <div className="pointer-events-none absolute inset-0 gradient-bg-hero -z-10" />
       <div className="pointer-events-none absolute inset-0 neural-grid-bg opacity-25" />
-      <div className="fixed top-3 right-3 z-[60]">
-        <ThemeToggle />
-      </div>
       <Navbar />
 
       {/* Hero */}

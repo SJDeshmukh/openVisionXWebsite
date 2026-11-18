@@ -6,6 +6,8 @@
     <title>OpenVisionX</title>
     <meta name="description" content="OpenVisionX" />
     <meta name="author" content="OpenVisionX" />
+    <meta name="theme-color" content="#050816" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#fafafa" media="(prefers-color-scheme: light)" />
     <link rel="icon" href="/openVisionXLogo.png" sizes="any" />
     <link rel="apple-touch-icon" href="/openVisionXLogo.png" />
 
@@ -36,6 +38,16 @@
   </head>
 
   <body>
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem("theme");
+          var dark = stored === "dark" || (stored !== "light" && matchMedia("(prefers-color-scheme: dark)").matches);
+          document.documentElement.classList.toggle("dark", dark);
+          document.documentElement.style.colorScheme = dark ? "dark" : "light";
+        } catch (_) {}
+      })();
+    </script>
     <div id="root"></div>
     <script>
       (function () {
