@@ -29,7 +29,7 @@ export default function FuturisticLanding() {
     <section ref={heroRef} id="platform" className="ovx-hero section-padding"><div className="ovx-noise" /><div className="ovx-grid" />
       <motion.div className="ovx-symbol-stage" style={{ opacity: symbolOpacity, scale: symbolScale, y: symbolY }} aria-hidden="true">
         <img src="/hero-circuit.gif" alt="" className="ovx-symbol-texture" />
-        <div className="ovx-symbol-core"><img src="/logo-eye.svg" alt="" /></div>
+        <div className="ovx-symbol-core"><img src="/openVisionXLogo.png" alt="" /></div>
       </motion.div>
       <div className="relative z-10 mx-auto max-w-[1440px] pt-32 sm:pt-40">
         <div className="grid min-h-[calc(100svh-10rem)] items-center gap-12 pb-16 lg:grid-cols-[1.03fr_.97fr] lg:gap-16">
