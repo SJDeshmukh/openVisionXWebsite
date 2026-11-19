@@ -10,8 +10,8 @@ const links = [
 ];
 
 const products = [
-  { label: "TapInX", detail: "Touchless access", href: "#products", icon: Fingerprint },
-  { label: "AttendX", detail: "AI attendance", href: "/ai-attendance-system.html", icon: ScanFace },
+  { label: "TapInX", detail: "AI attendance & identity", href: "/ai-attendance-system.html", icon: Fingerprint },
+  { label: "AttendX", detail: "Classroom workflows", href: "#products", icon: ScanFace },
   { label: "RouteX", detail: "Mobility intelligence", href: "#products", icon: Bus },
 ];
 
