@@ -17,9 +17,9 @@ const architectureStages = [
   ["Connected ecosystem", "Action coordinated", "/architecture-net.gif"],
 ];
 const useCases = [
-  { icon: GraduationCap, title: "Education", text: "Connect attendance, campus access and transport into one daily operating picture.", media: "/bus_track.gif", alt: "Real-time student transport and campus mobility" },
-  { icon: Building2, title: "Enterprise", text: "Coordinate workforce identity, facilities and mobility without fragmented tools.", media: "/corporate.gif", alt: "Animated connected enterprise operations" },
-  { icon: Users, title: "Institutions", text: "Understand people, movement and critical events while they are happening.", media: "/future.gif", alt: "Real-time institutional command and analytics environment" },
+  { icon: GraduationCap, title: "Education", text: "Connect attendance, campus access and transport into one daily operating picture.", media: "/ai_engine.gif", alt: "Animated AI learning and visual intelligence" },
+  { icon: Building2, title: "Enterprise", text: "Coordinate workforce identity, facilities and mobility without fragmented tools.", media: "/cloud.gif", alt: "Animated cloud and connected enterprise infrastructure" },
+  { icon: Users, title: "Institutions", text: "Understand people, movement and critical events while they are happening.", media: "/mobile.gif", alt: "Animated mobile operations and live institutional visibility" },
 ];
 const reveal = { initial: { opacity: 0, y: 24 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, margin: "-80px" }, transition: { duration: 0.65 } };
 
