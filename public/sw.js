@@ -1,4 +1,4 @@
-const CACHE_NAME = "ovx-cache-v2";
+const CACHE_NAME = "ovx-cache-v3";
 const PRECACHE_URLS = [
   "/openVisionXLogo.png",
   "/ai_first.gif",

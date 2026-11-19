@@ -6,8 +6,8 @@
 
 @layer base {
   :root {
-    --background: 0 0% 98%;
-    --foreground: 228 18% 12%;
+    --background: 216 45% 98%;
+    --foreground: 226 45% 10%;
 
     --card: 0 0% 100%;
     --card-foreground: 228 18% 12%;
@@ -51,7 +51,7 @@
 }
 
 .dark {
-  --background: 0 0% 0%;
+  --background: 226 58% 4%;
   --foreground: 210 25% 96%;
 
   --card: 228 45% 7%;
@@ -132,6 +132,107 @@
     box-shadow: 0 12px 40px -18px hsl(var(--foreground) / 0.28), inset 0 1px 0 hsl(var(--foreground) / 0.05);
     backdrop-filter: blur(24px) saturate(150%);
   }
+
+  .ai-hero {
+    @apply relative overflow-hidden;
+    background:
+      radial-gradient(circle at 72% 28%, hsl(var(--glow-blue) / 0.1), transparent 28%),
+      radial-gradient(circle at 18% 10%, hsl(var(--glow-purple) / 0.08), transparent 32%);
+  }
+
+  .ai-grid {
+    @apply pointer-events-none absolute inset-0;
+    background-image:
+      linear-gradient(hsl(var(--border) / 0.28) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--border) / 0.28) 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: linear-gradient(to bottom, black, transparent 88%);
+  }
+
+  .ai-orb {
+    @apply pointer-events-none absolute rounded-full blur-[100px];
+    opacity: 0.18;
+  }
+
+  .ai-orb-one { @apply -right-40 top-0 h-[520px] w-[520px] bg-cyan-400; }
+  .ai-orb-two { @apply -left-56 top-1/3 h-[430px] w-[430px] bg-violet-500; opacity: 0.1; }
+  .ai-orb-three { @apply -right-40 top-1/3 h-[480px] w-[480px] bg-violet-500; opacity: 0.12; }
+
+  .ai-kicker {
+    @apply inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/10 px-4 py-2 text-sm font-semibold text-primary;
+    box-shadow: inset 0 1px 0 hsl(var(--foreground) / 0.05);
+  }
+
+  .ai-gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(100deg, hsl(var(--glow-blue)), hsl(var(--glow-purple)) 78%);
+  }
+
+  .ai-button-primary,
+  .ai-button-secondary {
+    @apply min-h-12 items-center justify-center rounded-xl px-6 py-3 text-center text-sm font-semibold transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+  }
+
+  .ai-button-primary {
+    @apply flex text-primary-foreground;
+    background: linear-gradient(110deg, hsl(var(--glow-blue)), hsl(var(--glow-purple)));
+    box-shadow: 0 12px 40px -14px hsl(var(--glow-blue) / 0.75);
+  }
+
+  .ai-button-primary:hover { transform: translateY(-2px); box-shadow: 0 16px 48px -12px hsl(var(--glow-blue) / 0.8); }
+  .ai-button-secondary { @apply flex border border-border/80 bg-background/60 text-foreground backdrop-blur-xl hover:border-primary/40 hover:bg-primary/5; }
+
+  .ai-visual-shell,
+  .ai-glass-band,
+  .ai-cta {
+    @apply relative border border-border/70;
+    background: linear-gradient(145deg, hsl(var(--card) / 0.82), hsl(var(--card) / 0.48));
+    box-shadow: 0 36px 100px -42px hsl(var(--foreground) / 0.38), inset 0 1px 0 hsl(var(--foreground) / 0.06);
+    backdrop-filter: blur(26px) saturate(150%);
+  }
+
+  .ai-visual-shell { @apply overflow-hidden rounded-[2rem]; }
+  .ai-glass-band { @apply rounded-[2rem]; }
+
+  .ai-core {
+    @apply relative flex h-32 w-32 items-center justify-center rounded-full border border-primary/30 bg-background/80;
+    box-shadow: 0 0 80px hsl(var(--glow-blue) / 0.24), inset 0 0 32px hsl(var(--glow-blue) / 0.1);
+  }
+
+  .ai-core-ring { @apply absolute -inset-8 rounded-full border border-primary/20; animation: ai-spin 14s linear infinite; }
+  .ai-core-ring::after { content: ""; @apply absolute -top-1 left-1/2 h-2 w-2 rounded-full bg-primary shadow-[0_0_16px_hsl(var(--primary))]; }
+  .ai-core-ring-two { @apply -inset-16 border-accent/20; animation-direction: reverse; animation-duration: 20s; }
+
+  .ai-node {
+    @apply absolute z-10 flex items-center gap-2 rounded-xl border border-border/70 bg-background/80 px-3 py-2 text-xs font-semibold text-foreground shadow-lg backdrop-blur-xl;
+  }
+
+  .ai-section-label { @apply mb-4 text-sm font-semibold uppercase tracking-[0.22em] text-primary; }
+  .ai-section-title { @apply font-display text-4xl font-semibold tracking-[-0.045em] text-foreground sm:text-5xl lg:text-6xl; }
+  .ai-section-copy { @apply mt-5 max-w-2xl text-lg leading-8 text-muted-foreground; }
+
+  .ai-product-card {
+    @apply relative overflow-hidden rounded-[1.75rem] border border-border/70 bg-card/55 p-7 transition-all duration-500 sm:p-8;
+    box-shadow: inset 0 1px 0 hsl(var(--foreground) / 0.05);
+    backdrop-filter: blur(18px);
+  }
+
+  .ai-product-card::before { content: ""; @apply absolute inset-x-0 top-0 h-px; background: linear-gradient(90deg, transparent, hsl(var(--glow-blue) / 0.8), transparent); }
+  .ai-product-card:hover { transform: translateY(-8px); border-color: hsl(var(--primary) / 0.35); box-shadow: 0 30px 80px -40px hsl(var(--glow-blue) / 0.5); }
+  .ai-tone-violet::before { background: linear-gradient(90deg, transparent, hsl(var(--glow-purple) / 0.85), transparent); }
+  .ai-tone-blue::before { background: linear-gradient(90deg, transparent, hsl(220 100% 65% / 0.85), transparent); }
+
+  .ai-chip { @apply rounded-full border border-border/70 bg-background/55 px-4 py-2 text-sm font-medium text-foreground; }
+  .ai-architecture-card { @apply rounded-3xl border border-border/70 bg-card/55 p-7 text-center shadow-sm backdrop-blur-xl; }
+
+  .ai-cta {
+    @apply rounded-[2rem];
+    background:
+      radial-gradient(circle at 50% 110%, hsl(var(--glow-blue) / 0.2), transparent 45%),
+      linear-gradient(145deg, hsl(var(--card) / 0.9), hsl(var(--card) / 0.55));
+  }
+
+  @keyframes ai-spin { to { transform: rotate(360deg); } }
 
   .glass-panel-hover {
     @apply glass-panel transition-all duration-500 cursor-default;

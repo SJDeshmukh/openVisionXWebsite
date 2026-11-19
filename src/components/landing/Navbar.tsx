@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUpRight, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import ThemeToggle from "@/components/ThemeToggle";
 
 const links = [
   { label: "Platform", href: "#platform" },
-  { label: "AttendX", href: "#attendx" },
   { label: "Solutions", href: "#solutions" },
+  { label: "Intelligence", href: "#intelligence" },
   { label: "Architecture", href: "#architecture" },
-  { label: "Contact", href: "#contact" },
+  { label: "Use cases", href: "#use-cases" },
 ];
 
 export default function Navbar() {
@@ -85,7 +85,7 @@ export default function Navbar() {
           <div className="flex items-center gap-2">
             <ThemeToggle />
             <a href="#contact" className="hidden h-10 items-center gap-1.5 rounded-xl bg-foreground px-4 text-sm font-semibold text-background transition-transform hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:inline-flex">
-              Book a demo <ArrowUpRight className="h-4 w-4" />
+              Request demo
             </a>
             <button
               type="button"
@@ -118,11 +118,10 @@ export default function Navbar() {
                       className={`flex items-center justify-between rounded-xl px-4 py-3 text-sm font-semibold transition-colors ${activeSection === item.href.slice(1) ? "bg-primary/10 text-primary" : "text-foreground hover:bg-muted"}`}
                     >
                       {item.label}
-                      <ArrowUpRight className="h-4 w-4 text-muted-foreground" />
                     </a>
                   ))}
                   <a href="#contact" onClick={() => setMobileOpen(false)} className="mt-2 flex items-center justify-center gap-2 rounded-xl bg-foreground px-4 py-3 text-sm font-semibold text-background sm:hidden">
-                    Book a demo <ArrowUpRight className="h-4 w-4" />
+                    Request demo
                   </a>
                 </div>
               </motion.div>

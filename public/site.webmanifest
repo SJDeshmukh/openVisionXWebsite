@@ -1,0 +1,17 @@
+{
+  "name": "OpenVisionX",
+  "short_name": "OpenVisionX",
+  "description": "AI for connected attendance, identity, access and mobility operations.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#050816",
+  "theme_color": "#050816",
+  "icons": [
+    {
+      "src": "/openVisionXLogo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
