@@ -11,9 +11,9 @@ const architectureStages = [
   ["People & devices", "Signals enter", "/user.gif"], ["Visual capture", "Events observed", "/face1.gif"], ["AI inference", "Context understood", "/ai_engine.gif"], ["Cloud orchestration", "Data connected", "/cloud2.gif"], ["Command view", "Operations unified", "/dashboard.gif"], ["Mobile operations", "Teams informed", "/mobile.gif"], ["Action & insight", "Decisions activated", "/real_time.gif"],
 ];
 const useCases = [
-  { icon: GraduationCap, title: "Education", text: "Connect attendance, campus access and transport into one daily operating picture." },
-  { icon: Building2, title: "Enterprise", text: "Coordinate workforce identity, facilities and mobility without fragmented tools." },
-  { icon: Users, title: "Institutions", text: "Understand people, movement and critical events while they are happening." },
+  { icon: GraduationCap, title: "Education", text: "Connect attendance, campus access and transport into one daily operating picture.", media: "/ai_first.gif", alt: "Applied AI visualization for connected education" },
+  { icon: Building2, title: "Enterprise", text: "Coordinate workforce identity, facilities and mobility without fragmented tools.", media: "/corporate.gif", alt: "Animated connected enterprise operations" },
+  { icon: Users, title: "Institutions", text: "Understand people, movement and critical events while they are happening.", media: "/future.gif", alt: "Real-time institutional command and analytics environment" },
 ];
 const reveal = { initial: { opacity: 0, y: 24 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, margin: "-80px" }, transition: { duration: 0.65 } };
 
@@ -63,7 +63,7 @@ export default function FuturisticLanding() {
       <motion.div {...reveal} className="ovx-architecture"><div className="ovx-flow-line"><motion.span animate={{ left: ["0%", "100%"] }} transition={{ duration: 5, repeat: Infinity, ease: "linear" }} /></div>{architectureStages.map((stage, index) => <motion.article key={stage[0]} initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * .09 }}><div className="ovx-stage-visual"><img src={stage[2]} alt="" /><span>{String(index + 1).padStart(2, "0")}</span></div><h3>{stage[0]}</h3><p>{stage[1]}</p></motion.article>)}</motion.div>
     </div></section>
 
-    <section id="use-cases" className="section-padding ovx-section"><div className="mx-auto max-w-[1440px]"><motion.div {...reveal} className="ovx-section-intro"><span className="ovx-index">04 / Environments</span><h2>Built for places<br /><em>that cannot stand still.</em></h2></motion.div><div className="ovx-use-grid">{useCases.map((item, index) => <motion.article {...reveal} transition={{ delay: index * .08 }} key={item.title}><span>0{index + 1}</span><item.icon /><h3>{item.title}</h3><p>{item.text}</p></motion.article>)}</div></div></section>
+    <section id="use-cases" className="section-padding ovx-section"><div className="mx-auto max-w-[1440px]"><motion.div {...reveal} className="ovx-section-intro"><span className="ovx-index">04 / Environments</span><h2>Built for places<br /><em>that cannot stand still.</em></h2></motion.div><div className="ovx-use-grid">{useCases.map((item, index) => <motion.article {...reveal} transition={{ delay: index * .08 }} key={item.title}><div className="ovx-use-media"><img src={item.media} alt={item.alt} loading="lazy" decoding="async" /><div><span>Live environment</span><item.icon /></div></div><div className="ovx-use-copy"><span>0{index + 1}</span><h3>{item.title}</h3><p>{item.text}</p></div></motion.article>)}</div></div></section>
 
     <section id="contact" className="section-padding pb-10 pt-12 sm:pb-16"><motion.div {...reveal} className="ovx-cta mx-auto max-w-[1440px]"><div><span className="ovx-index">05 / Start a conversation</span><h2>See what your operations<br />have been missing.</h2></div><div><p>Explore how OpenVisionX can connect identity, attendance and mobility across your organization.</p><a href="mailto:contact@openvisionx.com?subject=OpenVisionX%20platform%20demo" className="ovx-primary-button"><MapPinned className="h-4 w-4" />Request a private demo</a></div><Layers3 className="ovx-cta-mark" /></motion.div></section>
   </main>;
