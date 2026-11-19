@@ -289,13 +289,16 @@
   .ai-chip { @apply rounded-full border border-border/70 bg-background/55 px-4 py-2 text-sm font-medium text-foreground; }
   .ai-architecture-card { @apply rounded-3xl border border-border/70 bg-card/55 p-7 text-center shadow-sm backdrop-blur-xl; }
 
-  .architecture-flow { @apply relative overflow-hidden rounded-[2rem] border border-border/70 bg-card/40 p-4 sm:p-6; box-shadow: inset 0 1px 0 hsl(var(--foreground) / 0.05), 0 35px 90px -60px hsl(var(--foreground) / 0.5); }
-  .architecture-track { @apply relative z-10 grid grid-flow-col auto-cols-[185px] gap-3 overflow-x-auto pb-3 sm:auto-cols-[205px] xl:grid-flow-row xl:grid-cols-7 xl:overflow-visible xl:pb-0; scrollbar-width: thin; scrollbar-color: hsl(var(--primary) / 0.35) transparent; }
-  .architecture-line { @apply absolute left-14 right-14 top-[10.7rem] hidden h-px xl:block; background: linear-gradient(90deg, transparent, hsl(var(--glow-blue) / 0.65), hsl(var(--glow-purple) / 0.65), transparent); }
-  .architecture-stage { @apply relative rounded-2xl border border-border/60 bg-background/55 p-3 pb-5 backdrop-blur-lg transition-all duration-300 hover:-translate-y-1 hover:border-primary/35; }
-  .architecture-stage-media { @apply relative aspect-square overflow-hidden rounded-xl border border-border/60 bg-background; }
-  .architecture-stage-media img { filter: saturate(0.85) contrast(1.05); }
-  .architecture-node { @apply relative z-20 -mt-4 ml-3 flex h-8 w-8 items-center justify-center rounded-full border border-primary/40 bg-background font-mono text-[0.65rem] font-bold text-primary; box-shadow: 0 0 22px hsl(var(--glow-blue) / 0.22); }
+  .architecture-sequence-shell { @apply overflow-hidden rounded-[2rem] border border-border/70 bg-card/40 px-5 py-10 sm:px-8; box-shadow: inset 0 1px 0 hsl(var(--foreground) / 0.05), 0 35px 90px -60px hsl(var(--foreground) / 0.5); }
+  .architecture-sequence { @apply flex min-w-max items-start overflow-x-auto pb-4; scrollbar-width: thin; scrollbar-color: hsl(var(--primary) / 0.35) transparent; }
+  .architecture-sequence-stage { @apply relative w-[132px] shrink-0 text-center; }
+  .architecture-orbit { @apply relative mx-auto h-24 w-24 rounded-full border border-primary/40 bg-background p-1.5; box-shadow: 0 0 38px hsl(var(--glow-blue) / 0.22), inset 0 0 20px hsl(var(--glow-blue) / 0.08); }
+  .architecture-orbit img { @apply h-full w-full rounded-full object-cover; filter: saturate(0.85) contrast(1.08); }
+  .architecture-orbit-pulse { @apply pointer-events-none absolute inset-[-8px] rounded-full border border-primary/30; }
+  .architecture-step-number { @apply absolute -bottom-2 left-1/2 flex h-7 w-7 -translate-x-1/2 items-center justify-center rounded-full border border-primary/50 bg-background font-mono text-[0.6rem] font-bold text-primary; box-shadow: 0 0 15px hsl(var(--primary) / 0.35); }
+  .architecture-connector-wrap { @apply flex h-24 w-10 shrink-0 items-center sm:w-14; }
+  .architecture-connector { @apply relative h-[2px] w-full origin-left overflow-hidden; background: linear-gradient(90deg, hsl(var(--glow-blue) / 0.6), hsl(var(--glow-purple) / 0.6)); }
+  .architecture-connector span { @apply absolute -top-[3px] h-2 w-2 rounded-full bg-primary; box-shadow: 0 0 12px hsl(var(--primary)); }
 
   .ai-showcase-grid {
     @apply grid items-center gap-12 overflow-hidden rounded-[2rem] border border-border/70 p-7 sm:p-10 lg:grid-cols-[.78fr_1.22fr] lg:p-14;

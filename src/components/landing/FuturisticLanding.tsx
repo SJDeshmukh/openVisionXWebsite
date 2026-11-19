@@ -135,16 +135,27 @@ export default function FuturisticLanding() {
         <div className="ai-grid opacity-40" />
         <div className="relative mx-auto max-w-[1380px]">
           <motion.div {...fadeUp} className="mx-auto max-w-3xl text-center"><p className="ai-section-label">Built to connect</p><h2 className="ai-section-title">A modular architecture for real-world AI.</h2><p className="ai-section-copy mx-auto">Connect edge devices, visual inputs and operational data to a platform designed around live institutional workflows.</p></motion.div>
-          <motion.div {...fadeUp} className="architecture-flow mt-16">
-            <div className="architecture-line" />
-            <div className="architecture-track">
+          <motion.div {...fadeUp} className="architecture-sequence-shell mt-16">
+            <div className="architecture-sequence">
               {architectureStages.map((stage, index) => (
-                <motion.article key={stage.label} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.4 }} transition={{ duration: 0.55, delay: index * 0.07 }} className="architecture-stage">
-                  <div className="architecture-stage-media"><img src={stage.media} alt={`${stage.label} architecture stage`} className="h-full w-full object-cover" loading="lazy" decoding="async" /><div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" /></div>
-                  <div className="architecture-node"><span>{String(index + 1).padStart(2, "0")}</span></div>
-                  <h3 className="mt-5 font-display text-lg font-bold tracking-[-0.03em] text-foreground">{stage.label}</h3>
-                  <p className="mt-2 text-sm leading-6 text-muted-foreground">{stage.detail}</p>
-                </motion.article>
+                <div key={stage.label} className="flex items-start">
+                  <motion.article initial={{ opacity: 0, scale: 0.72, y: 18 }} whileInView={{ opacity: 1, scale: 1, y: 0 }} viewport={{ once: true, amount: 0.45 }} transition={{ duration: 0.55, delay: index * 0.16 }} className="architecture-sequence-stage">
+                    <div className="architecture-orbit">
+                      <img src={stage.media} alt={`${stage.label} architecture stage`} className="h-full w-full object-cover" loading="lazy" decoding="async" />
+                      <motion.span className="architecture-orbit-pulse" animate={{ scale: [1, 1.14, 1], opacity: [0.45, 0.08, 0.45] }} transition={{ duration: 2.8, repeat: Infinity, delay: index * 0.22 }} />
+                      <span className="architecture-step-number">{String(index + 1).padStart(2, "0")}</span>
+                    </div>
+                    <h3 className="mt-5 font-display text-base font-bold tracking-[-0.03em] text-foreground">{stage.label}</h3>
+                    <p className="mt-2 text-xs leading-5 text-muted-foreground">{stage.detail}</p>
+                  </motion.article>
+                  {index < architectureStages.length - 1 && (
+                    <div className="architecture-connector-wrap">
+                      <motion.div initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }} viewport={{ once: true, amount: 0.5 }} transition={{ duration: 0.65, delay: index * 0.16 + 0.35 }} className="architecture-connector">
+                        <motion.span animate={{ x: ["-10%", "620%"] }} transition={{ duration: 2.2, repeat: Infinity, ease: "linear", delay: index * 0.2 }} />
+                      </motion.div>
+                    </div>
+                  )}
+                </div>
               ))}
             </div>
           </motion.div>
