@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import { Activity, ArrowDown, BrainCircuit, Building2, Bus, Check, Eye, Fingerprint, GraduationCap, Layers3, MapPinned, ScanFace, Users } from "lucide-react";
+import { useRef, useState } from "react";
+import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
+import { Activity, BrainCircuit, Building2, Bus, Check, Eye, Fingerprint, GraduationCap, Layers3, MapPinned, ScanFace, Users } from "lucide-react";
 
 const products = [
   { name: "TapInX", number: "01", eyebrow: "Identity & access", statement: "Every entry becomes a trusted event.", description: "A touchless identity layer that verifies access and brings every entry event into one operational view.", icon: Fingerprint, logo: "/tapinx-logo.svg", media: "/security.gif", points: ["Identity verification", "Access event visibility", "Unified entry records"], accent: "#13d9ff" },
@@ -19,23 +19,34 @@ const reveal = { initial: { opacity: 0, y: 24 }, whileInView: { opacity: 1, y: 0
 
 export default function FuturisticLanding() {
   const [activeProduct, setActiveProduct] = useState(0);
+  const heroRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
+  const symbolOpacity = useTransform(scrollYProgress, [0, 0.52, 0.88], [1, 0.78, 0]);
+  const symbolScale = useTransform(scrollYProgress, [0, 1], [1, 0.72]);
+  const symbolY = useTransform(scrollYProgress, [0, 1], [0, 180]);
   const product = products[activeProduct];
   return <main>
-    <section id="platform" className="ovx-hero section-padding"><div className="ovx-noise" /><div className="ovx-grid" />
+    <section ref={heroRef} id="platform" className="ovx-hero section-padding"><div className="ovx-noise" /><div className="ovx-grid" />
+      <motion.div className="ovx-symbol-stage" style={{ opacity: symbolOpacity, scale: symbolScale, y: symbolY }} aria-hidden="true">
+        <img src="/hero-circuit.gif" alt="" className="ovx-symbol-texture" />
+        <div className="ovx-symbol-orbit ovx-symbol-orbit-one"><i /></div>
+        <div className="ovx-symbol-orbit ovx-symbol-orbit-two"><i /></div>
+        <div className="ovx-symbol-orbit ovx-symbol-orbit-three"><i /></div>
+        <div className="ovx-symbol-core"><span /><img src="/openVisionXLogo.png" alt="" /></div>
+        <div className="ovx-symbol-label ovx-symbol-label-a"><Fingerprint />Identity verified</div>
+        <div className="ovx-symbol-label ovx-symbol-label-b"><Bus />Mobility tracking</div>
+        <div className="ovx-symbol-label ovx-symbol-label-c"><ScanFace />Vision active</div>
+      </motion.div>
       <div className="relative z-10 mx-auto max-w-[1440px] pt-32 sm:pt-40">
         <div className="grid min-h-[calc(100svh-10rem)] items-center gap-12 pb-16 lg:grid-cols-[1.03fr_.97fr] lg:gap-16">
           <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .8 }}>
             <div className="ovx-eyebrow"><span>OpenVision intelligence layer</span><span className="ovx-live">Live</span></div>
             <h1 className="ovx-hero-title">See the world.<br /><span>Run it better.</span></h1>
             <p className="ovx-hero-copy">One AI operations platform for identity, attendance and mobility—turning activity in the physical world into decisions your teams can act on.</p>
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row"><a href="#contact" className="ovx-primary-button">Request a private demo</a><a href="#products" className="ovx-text-link">Explore the platform <ArrowDown className="h-4 w-4" /></a></div>
+            <div className="mt-9 flex flex-col gap-3 sm:flex-row"><a href="#contact" className="ovx-primary-button">Request a private demo</a><a href="#products" className="ovx-text-link">Explore the platform</a></div>
             <div className="ovx-capability-row">{["Vision", "Identity", "Mobility"].map((item, i) => <div key={item}><span>0{i + 1}</span>{item}</div>)}</div>
           </motion.div>
-          <motion.div initial={{ opacity: 0, scale: .94 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1, delay: .15 }} className="ovx-command-visual">
-            <div className="ovx-command-head"><div><span className="ovx-signal" />OpenVision Command</div><span>OVX / LIVE</span></div>
-            <div className="ovx-command-body"><img src="/hero-circuit.gif" alt="OpenVisionX AI command system" className="ovx-command-texture" fetchPriority="high" /><div className="ovx-radar"><span /><span /><span /><div className="ovx-core"><img src="/openVisionXLogo.png" alt="OpenVisionX" /></div></div><div className="ovx-telemetry ovx-telemetry-a"><Fingerprint />Identity<span>Verified</span></div><div className="ovx-telemetry ovx-telemetry-b"><Bus />Mobility<span>Tracking</span></div><div className="ovx-telemetry ovx-telemetry-c"><ScanFace />Vision<span>Active</span></div></div>
-            <div className="ovx-command-foot"><div><strong>03</strong><span>connected products</span></div><div><strong>24/7</strong><span>operational context</span></div><div><strong>01</strong><span>command layer</span></div></div>
-          </motion.div>
+          <div className="hidden lg:block" />
         </div>
         <div className="ovx-proof-strip"><span>Physical intelligence, unified</span><div><Eye />Perceive</div><div><BrainCircuit />Understand</div><div><Activity />Act</div></div>
       </div>
