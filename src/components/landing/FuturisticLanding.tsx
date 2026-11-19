@@ -63,7 +63,7 @@ export default function FuturisticLanding() {
                 <div className="absolute inset-0 opacity-30 [background-image:linear-gradient(hsl(var(--border)/.6)_1px,transparent_1px),linear-gradient(90deg,hsl(var(--border)/.6)_1px,transparent_1px)] [background-size:36px_36px]" />
                 <img src="/hero-circuit.gif" alt="Animated neural network and AI processing core" className="absolute inset-0 h-full w-full object-cover opacity-25 mix-blend-screen" fetchPriority="high" />
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_20%,hsl(var(--background)/.82)_78%)]" />
-                <div className="absolute inset-0 flex items-center justify-center"><div className="ai-core"><div className="ai-core-logo"><img src="/openVisionXLogo.png" alt="OpenVisionX intelligence core" className="h-full w-full rounded-full object-cover" /></div><div className="ai-core-ring" /><div className="ai-core-ring ai-core-ring-two" /></div></div>
+                <div className="absolute inset-0 flex items-center justify-center"><div className="ai-core"><div className="ai-core-logo"><img src="/openVisionXLogo.png" alt="OpenVisionX intelligence core" className="h-full w-full rounded-full object-contain p-2" /></div><div className="ai-core-ring" /><div className="ai-core-ring ai-core-ring-two" /></div></div>
                 {[
                   { icon: ScanFace, label: "Identity", className: "left-5 top-8" }, { icon: Bus, label: "Mobility", className: "right-5 top-14" },
                   { icon: ShieldCheck, label: "Access", className: "bottom-9 left-8" }, { icon: Radar, label: "Live events", className: "bottom-6 right-7" },
