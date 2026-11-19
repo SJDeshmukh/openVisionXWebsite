@@ -8,10 +8,10 @@
   "theme_color": "#050816",
   "icons": [
     {
-      "src": "/openVisionXLogo.png",
-      "sizes": "512x512",
+      "src": "/openvisionx-symbol-transparent.png",
+      "sizes": "any",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     }
   ]
 }

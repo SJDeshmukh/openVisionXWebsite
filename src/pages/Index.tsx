@@ -40,7 +40,7 @@ const Index = () => {
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-2">
             <div className="w-6 h-6 rounded overflow-hidden">
-              <img src="/openVisionXLogo.png" alt="OpenVisionX logo" className="w-full h-full object-cover" />
+              <img src="/openvisionx-symbol-transparent.png" alt="OpenVisionX logo" className="w-full h-full object-contain" />
             </div>
             <span className="font-display font-bold text-foreground">OpenVisionX</span>
           </div>

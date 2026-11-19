@@ -36,7 +36,7 @@ export default function Navbar() {
     <motion.nav initial={{ opacity: 0, y: -16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} aria-label="Primary navigation" className="fixed inset-x-0 top-0 z-50 px-3 sm:px-6">
       <div className={`signature-nav mx-auto mt-3 max-w-[1380px] ${scrolled ? "signature-nav-scrolled" : ""}`}>
         <a href="#platform" className="group flex items-center gap-3 rounded-2xl px-2 py-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring" aria-label="OpenVisionX home">
-          <div className="brand-mark"><img src="/openVisionXLogo.png" alt="" className="h-full w-full object-contain" /></div>
+          <div className="brand-mark"><img src="/openvisionx-symbol-transparent.png" alt="" className="h-full w-full object-contain" /></div>
           <div><span className="block font-display text-[1.05rem] font-bold tracking-[-0.04em] text-foreground">OpenVisionX</span><span className="hidden text-[0.62rem] font-bold uppercase tracking-[0.22em] text-muted-foreground sm:block">Physical intelligence</span></div>
         </a>
 
