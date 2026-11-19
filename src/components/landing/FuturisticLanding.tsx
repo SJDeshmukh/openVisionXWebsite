@@ -6,9 +6,9 @@ import {
 } from "lucide-react";
 
 const products = [
-  { name: "AttendX", eyebrow: "AI attendance", description: "Group-based facial attendance designed for classrooms, institutions and distributed teams.", icon: ScanFace, logo: "/attendx-logo.svg", points: ["Group photo recognition", "Classroom-scale workflows", "Central attendance visibility"], tone: "cyan" },
-  { name: "RouteX", eyebrow: "Intelligent mobility", description: "A live operations layer for routes, vehicles and the people moving through your network.", icon: Bus, logo: "/routex-logo.svg", points: ["Live fleet monitoring", "Route and stop management", "Operational alerts"], tone: "violet" },
-  { name: "TapInX", eyebrow: "Secure access", description: "Touchless identity and access workflows that connect entry events to one command layer.", icon: Fingerprint, logo: "/tapinx-logo.svg", points: ["Identity verification", "Entry event visibility", "Unified access records"], tone: "blue" },
+  { name: "AttendX", eyebrow: "AI attendance", description: "Group-based facial attendance designed for classrooms, institutions and distributed teams.", icon: ScanFace, logo: "/attendx-logo.svg", media: "/school.gif", mediaAlt: "AI-assisted classroom attendance visualization", points: ["Group photo recognition", "Classroom-scale workflows", "Central attendance visibility"], tone: "cyan" },
+  { name: "RouteX", eyebrow: "Intelligent mobility", description: "A live operations layer for routes, vehicles and the people moving through your network.", icon: Bus, logo: "/routex-logo.svg", media: "/bus_track.gif", mediaAlt: "Live bus and route tracking visualization", points: ["Live fleet monitoring", "Route and stop management", "Operational alerts"], tone: "violet" },
+  { name: "TapInX", eyebrow: "Secure access", description: "Touchless identity and access workflows that connect entry events to one command layer.", icon: Fingerprint, logo: "/tapinx-logo.svg", media: "/security.gif", mediaAlt: "Secure identity verification visualization", points: ["Identity verification", "Entry event visibility", "Unified access records"], tone: "blue" },
 ];
 
 const useCases = [
@@ -51,6 +51,8 @@ export default function FuturisticLanding() {
               <div className="flex items-center justify-between border-b border-border/60 px-5 py-4"><div className="flex items-center gap-2 text-sm font-semibold text-foreground"><span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_14px_rgb(52_211_153)]" />OpenVision Command</div><span className="font-mono text-xs text-muted-foreground">SYSTEM ONLINE</span></div>
               <div className="relative aspect-[1.12] overflow-hidden p-5">
                 <div className="absolute inset-0 opacity-30 [background-image:linear-gradient(hsl(var(--border)/.6)_1px,transparent_1px),linear-gradient(90deg,hsl(var(--border)/.6)_1px,transparent_1px)] [background-size:36px_36px]" />
+                <img src="/hero-circuit.gif" alt="Animated neural network and AI processing core" className="absolute inset-0 h-full w-full object-cover opacity-25 mix-blend-screen" fetchPriority="high" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_20%,hsl(var(--background)/.82)_78%)]" />
                 <div className="absolute inset-0 flex items-center justify-center"><div className="ai-core"><BrainCircuit className="h-12 w-12 text-primary" /><div className="ai-core-ring" /><div className="ai-core-ring ai-core-ring-two" /></div></div>
                 {[
                   { icon: ScanFace, label: "Identity", className: "left-5 top-8" }, { icon: Bus, label: "Mobility", className: "right-5 top-14" },
@@ -76,12 +78,39 @@ export default function FuturisticLanding() {
           <div className="mt-14 grid gap-6 lg:grid-cols-3">
             {products.map((product, index) => (
               <motion.article key={product.name} {...fadeUp} transition={{ duration: 0.7, delay: index * 0.1 }} className={`ai-product-card ai-tone-${product.tone}`}>
-                <div className="flex items-start justify-between"><div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-border/70 bg-background/70 p-2.5 shadow-sm"><img src={product.logo} alt={`${product.name} product logo`} className="h-full w-full object-contain" loading="lazy" /></div><product.icon className="h-6 w-6 text-primary" /></div>
+                <div className="ai-product-media">
+                  <img src={product.media} alt={product.mediaAlt} className="h-full w-full object-cover" loading="lazy" decoding="async" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
+                  <span className="absolute bottom-3 right-3 rounded-full border border-white/15 bg-black/45 px-3 py-1 text-[0.65rem] font-bold uppercase tracking-[0.16em] text-white backdrop-blur-md">Live intelligence</span>
+                </div>
+                <div className="relative -mt-7 flex items-end justify-between"><div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-border/70 bg-background p-2.5 shadow-xl"><img src={product.logo} alt={`${product.name} product logo`} className="h-full w-full object-contain" loading="lazy" /></div><product.icon className="mb-3 h-6 w-6 text-primary" /></div>
                 <p className="mt-8 text-sm font-semibold uppercase tracking-[0.18em] text-primary">{product.eyebrow}</p><h3 className="mt-2 font-display text-3xl font-semibold tracking-tight text-foreground">{product.name}</h3><p className="mt-4 min-h-24 leading-7 text-muted-foreground">{product.description}</p>
                 <ul className="mt-7 space-y-3 border-t border-border/60 pt-6">{product.points.map((point) => <li key={point} className="flex items-center gap-3 text-sm font-medium text-foreground/85"><span className="h-1.5 w-1.5 rounded-full bg-primary shadow-[0_0_8px_hsl(var(--primary))]" /> {point}</li>)}</ul>
               </motion.article>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="section-padding pb-28 sm:pb-36">
+        <div className="mx-auto max-w-[1380px]">
+          <motion.div {...fadeUp} className="ai-showcase-grid">
+            <div className="ai-showcase-copy">
+              <p className="ai-section-label">Operational intelligence, visible</p>
+              <h2 className="font-display text-4xl font-bold tracking-[-0.05em] text-foreground sm:text-5xl">A live command view for the physical world.</h2>
+              <p className="mt-5 max-w-xl text-lg leading-8 text-muted-foreground">Bring identity events, attendance workflows and movement signals into one visual operating environment your teams can understand at a glance.</p>
+              <div className="mt-8 grid grid-cols-2 gap-3">
+                {["Unified monitoring", "Real-time context", "Connected workflows", "Multi-device access"].map((item) => <div key={item} className="flex items-center gap-2 rounded-xl border border-border/60 bg-background/40 px-3 py-3 text-sm font-semibold text-foreground"><CheckCircle2 className="h-4 w-4 shrink-0 text-primary" />{item}</div>)}
+              </div>
+            </div>
+            <div className="ai-showcase-stage">
+              <div className="ai-browser-frame">
+                <div className="flex items-center gap-1.5 border-b border-border/60 px-4 py-3"><span className="h-2 w-2 rounded-full bg-red-400/80" /><span className="h-2 w-2 rounded-full bg-amber-400/80" /><span className="h-2 w-2 rounded-full bg-emerald-400/80" /><span className="ml-3 font-mono text-[0.65rem] uppercase tracking-[0.16em] text-muted-foreground">OpenVision command dashboard</span></div>
+                <img src="/dashboard.gif" alt="OpenVisionX operations dashboard visualization" className="aspect-video w-full object-cover" loading="lazy" decoding="async" />
+              </div>
+              <div className="ai-mobile-frame"><img src="/mobile-tracking.gif" alt="OpenVisionX mobile tracking interface" className="h-full w-full object-cover" loading="lazy" decoding="async" /></div>
+            </div>
+          </motion.div>
         </div>
       </section>
 

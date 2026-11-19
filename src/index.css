@@ -277,6 +277,10 @@
     backdrop-filter: blur(18px);
   }
 
+  .ai-product-media { @apply relative -mx-7 -mt-7 mb-0 aspect-[16/9] overflow-hidden border-b border-border/60 sm:-mx-8 sm:-mt-8; }
+  .ai-product-media img { filter: saturate(0.82) contrast(1.04); transition: transform 700ms ease, filter 500ms ease; }
+  .ai-product-card:hover .ai-product-media img { transform: scale(1.035); filter: saturate(1) contrast(1.08); }
+
   .ai-product-card::before { content: ""; @apply absolute inset-x-0 top-0 h-px; background: linear-gradient(90deg, transparent, hsl(var(--glow-blue) / 0.8), transparent); }
   .ai-product-card:hover { transform: translateY(-8px); border-color: hsl(var(--primary) / 0.35); box-shadow: 0 30px 80px -40px hsl(var(--glow-blue) / 0.5); }
   .ai-tone-violet::before { background: linear-gradient(90deg, transparent, hsl(var(--glow-purple) / 0.85), transparent); }
@@ -284,6 +288,17 @@
 
   .ai-chip { @apply rounded-full border border-border/70 bg-background/55 px-4 py-2 text-sm font-medium text-foreground; }
   .ai-architecture-card { @apply rounded-3xl border border-border/70 bg-card/55 p-7 text-center shadow-sm backdrop-blur-xl; }
+
+  .ai-showcase-grid {
+    @apply grid items-center gap-12 overflow-hidden rounded-[2rem] border border-border/70 p-7 sm:p-10 lg:grid-cols-[.78fr_1.22fr] lg:p-14;
+    background: radial-gradient(circle at 80% 40%, hsl(var(--glow-blue) / 0.11), transparent 38%), hsl(var(--card) / 0.5);
+    box-shadow: inset 0 1px 0 hsl(var(--foreground) / 0.05), 0 40px 100px -60px hsl(var(--foreground) / 0.5);
+  }
+
+  .ai-showcase-copy { @apply relative z-10; }
+  .ai-showcase-stage { @apply relative min-h-[290px] sm:min-h-[390px]; perspective: 1200px; }
+  .ai-browser-frame { @apply absolute inset-x-0 top-5 overflow-hidden rounded-2xl border border-border/70 bg-background/90 shadow-2xl; transform: rotateY(-5deg) rotateX(2deg); }
+  .ai-mobile-frame { @apply absolute -bottom-4 -right-2 h-[220px] w-[112px] overflow-hidden rounded-[1.4rem] border-[5px] border-background bg-background shadow-2xl sm:h-[290px] sm:w-[146px]; transform: rotate(4deg); }
 
   .ai-cta {
     @apply rounded-[2rem];
