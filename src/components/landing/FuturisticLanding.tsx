@@ -8,10 +8,16 @@ const products = [
   { name: "RouteX", number: "03", eyebrow: "Mobility intelligence", statement: "Know what is moving. And what is not.", description: "Live operational context for routes, vehicles and the people moving through your network.", logo: "/routex-logo.png", media: "/mobile-tracking.gif", points: ["Fleet monitoring", "Route management", "Operational alerts"], accent: "#c751ff" },
 ];
 const architectureStages = [
-  ["People & devices", "Signals enter", "/user.gif"], ["Visual capture", "Events observed", "/face1.gif"], ["AI inference", "Context understood", "/ai_engine.gif"], ["Cloud orchestration", "Data connected", "/cloud2.gif"], ["Command view", "Operations unified", "/dashboard.gif"], ["Mobile operations", "Teams informed", "/mobile.gif"], ["Action & insight", "Decisions activated", "/real_time.gif"],
+  ["People & devices", "Signals enter", "/user.gif"],
+  ["AI-first perception", "Events understood", "/ai_first.gif"],
+  ["Secure identity", "Trust established", "/security.gif"],
+  ["Real-time intelligence", "Context processed", "/real_time.gif"],
+  ["Seamless integration", "Systems connected", "/seamless.gif"],
+  ["Future-ready control", "Teams empowered", "/iron_man_future.gif"],
+  ["Connected ecosystem", "Action coordinated", "/architecture-net.gif"],
 ];
 const useCases = [
-  { icon: GraduationCap, title: "Education", text: "Connect attendance, campus access and transport into one daily operating picture.", media: "/ai_first.gif", alt: "Applied AI visualization for connected education" },
+  { icon: GraduationCap, title: "Education", text: "Connect attendance, campus access and transport into one daily operating picture.", media: "/bus_track.gif", alt: "Real-time student transport and campus mobility" },
   { icon: Building2, title: "Enterprise", text: "Coordinate workforce identity, facilities and mobility without fragmented tools.", media: "/corporate.gif", alt: "Animated connected enterprise operations" },
   { icon: Users, title: "Institutions", text: "Understand people, movement and critical events while they are happening.", media: "/future.gif", alt: "Real-time institutional command and analytics environment" },
 ];
