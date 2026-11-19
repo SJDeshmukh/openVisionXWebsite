@@ -31,11 +31,11 @@ export default function FuturisticLanding() {
     <main>
       <section id="platform" className="ai-hero section-padding">
         <div className="ai-orb ai-orb-one" /><div className="ai-orb ai-orb-two" /><div className="ai-grid" />
-        <div className="relative z-10 mx-auto grid min-h-screen max-w-7xl items-center gap-16 pb-20 pt-32 lg:grid-cols-[1.08fr_.92fr]">
+        <div className="relative z-10 mx-auto grid min-h-screen max-w-[1380px] items-center gap-16 pb-24 pt-36 lg:grid-cols-[1.02fr_.98fr]">
           <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
             <div className="ai-kicker mb-7"><Sparkles className="h-4 w-4" />Applied AI for the physical world</div>
-            <h1 className="max-w-5xl font-display text-5xl font-semibold leading-[0.94] tracking-[-0.055em] text-foreground sm:text-6xl lg:text-7xl xl:text-[5.4rem]">
-              Intelligence that sees.<span className="ai-gradient-text block">Infrastructure that responds.</span>
+            <h1 className="max-w-5xl font-display text-5xl font-bold leading-[0.92] tracking-[-0.065em] text-foreground sm:text-6xl lg:text-7xl xl:text-[5.65rem]">
+              Intelligence<br className="hidden sm:block" /> that sees.<span className="ai-gradient-text block">Systems that act.</span>
             </h1>
             <p className="mt-7 max-w-2xl text-lg leading-8 text-muted-foreground sm:text-xl">OpenVisionX unifies computer vision, identity and mobility into one AI operations platform for campuses, institutions and enterprises.</p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row"><a href="#contact" className="ai-button-primary">Request a platform demo</a><a href="#solutions" className="ai-button-secondary">Explore the platform</a></div>
@@ -44,10 +44,12 @@ export default function FuturisticLanding() {
             </div>
           </motion.div>
 
-          <motion.div initial={{ opacity: 0, scale: 0.94 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1, delay: 0.15 }} className="relative mx-auto w-full max-w-[570px]">
+          <motion.div initial={{ opacity: 0, scale: 0.94 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1, delay: 0.15 }} className="relative mx-auto w-full max-w-[610px]">
+            <div className="ai-floating-badge -left-8 top-24 hidden xl:flex"><span className="font-mono text-lg font-bold text-primary">03</span><span>Connected<br />AI products</span></div>
+            <div className="ai-floating-badge -right-8 bottom-24 hidden xl:flex"><span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_12px_rgb(52_211_153)]" /><span>Live operations<br />layer active</span></div>
             <div className="ai-visual-shell">
               <div className="flex items-center justify-between border-b border-border/60 px-5 py-4"><div className="flex items-center gap-2 text-sm font-semibold text-foreground"><span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_14px_rgb(52_211_153)]" />OpenVision Command</div><span className="font-mono text-xs text-muted-foreground">SYSTEM ONLINE</span></div>
-              <div className="relative aspect-[1.05] overflow-hidden p-5">
+              <div className="relative aspect-[1.12] overflow-hidden p-5">
                 <div className="absolute inset-0 opacity-30 [background-image:linear-gradient(hsl(var(--border)/.6)_1px,transparent_1px),linear-gradient(90deg,hsl(var(--border)/.6)_1px,transparent_1px)] [background-size:36px_36px]" />
                 <div className="absolute inset-0 flex items-center justify-center"><div className="ai-core"><BrainCircuit className="h-12 w-12 text-primary" /><div className="ai-core-ring" /><div className="ai-core-ring ai-core-ring-two" /></div></div>
                 {[

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -133,11 +133,65 @@
     backdrop-filter: blur(24px) saturate(150%);
   }
 
+  .signature-nav {
+    @apply relative flex min-h-[4.5rem] items-center justify-between rounded-[1.35rem] border border-border/60 px-3 py-2 transition-all duration-500 sm:px-4;
+    background: hsl(var(--background) / 0.7);
+    box-shadow: 0 10px 50px -30px hsl(var(--foreground) / 0.45), inset 0 1px 0 hsl(var(--foreground) / 0.06);
+    backdrop-filter: blur(24px) saturate(170%);
+  }
+
+  .signature-nav::before {
+    content: "";
+    @apply pointer-events-none absolute inset-x-10 top-0 h-px;
+    background: linear-gradient(90deg, transparent, hsl(var(--glow-blue) / 0.8), hsl(var(--glow-purple) / 0.6), transparent);
+  }
+
+  .signature-nav-scrolled {
+    @apply border-border/80;
+    background: hsl(var(--background) / 0.9);
+    box-shadow: 0 18px 60px -32px hsl(var(--foreground) / 0.55), inset 0 1px 0 hsl(var(--foreground) / 0.08);
+  }
+
+  .brand-mark {
+    @apply relative h-10 w-10 overflow-hidden rounded-[0.9rem] border border-primary/20 bg-card p-1.5;
+    box-shadow: 0 0 24px hsl(var(--glow-blue) / 0.15), inset 0 1px 0 hsl(var(--foreground) / 0.08);
+  }
+
+  .signature-nav-link {
+    @apply inline-flex h-10 items-center gap-1.5 rounded-xl px-3.5 text-sm font-semibold text-muted-foreground transition-all hover:bg-foreground/5 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring;
+  }
+
+  .nav-demo-button {
+    @apply min-h-10 items-center justify-center rounded-xl px-4 text-center text-xs font-extrabold uppercase tracking-[0.1em] text-primary-foreground transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring;
+    background: linear-gradient(110deg, hsl(var(--glow-blue)), hsl(var(--glow-purple)));
+    box-shadow: 0 10px 28px -12px hsl(var(--glow-blue) / 0.8);
+  }
+
+  .nav-demo-button:hover { transform: translateY(-1px); box-shadow: 0 14px 34px -10px hsl(var(--glow-blue) / 0.85); }
+
+  .product-menu {
+    @apply absolute left-1/2 top-full mt-3 w-[22rem] -translate-x-1/2 rounded-2xl border border-border/70 p-3;
+    background: hsl(var(--background) / 0.94);
+    box-shadow: 0 30px 80px -35px hsl(var(--foreground) / 0.6), inset 0 1px 0 hsl(var(--foreground) / 0.06);
+    backdrop-filter: blur(28px) saturate(160%);
+  }
+
+  .product-menu-item { @apply flex items-center gap-3 rounded-xl p-2.5 transition-colors hover:bg-primary/5; }
+  .mobile-signature-menu { @apply absolute left-0 right-0 top-full mt-3 rounded-2xl border border-border/70 p-3 lg:hidden; background: hsl(var(--background) / 0.97); box-shadow: 0 30px 70px -35px hsl(var(--foreground) / 0.55); backdrop-filter: blur(24px); }
+  .mobile-signature-link { @apply flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold text-foreground hover:bg-primary/5; }
+  .mobile-signature-link span { @apply ml-auto text-xs font-medium text-muted-foreground; }
+
   .ai-hero {
     @apply relative overflow-hidden;
     background:
       radial-gradient(circle at 72% 28%, hsl(var(--glow-blue) / 0.1), transparent 28%),
       radial-gradient(circle at 18% 10%, hsl(var(--glow-purple) / 0.08), transparent 32%);
+  }
+
+  .ai-hero::after {
+    content: "";
+    @apply pointer-events-none absolute inset-x-0 bottom-0 h-48;
+    background: linear-gradient(to bottom, transparent, hsl(var(--background)));
   }
 
   .ai-grid {
@@ -205,6 +259,12 @@
 
   .ai-node {
     @apply absolute z-10 flex items-center gap-2 rounded-xl border border-border/70 bg-background/80 px-3 py-2 text-xs font-semibold text-foreground shadow-lg backdrop-blur-xl;
+  }
+
+  .ai-floating-badge {
+    @apply absolute z-20 items-center gap-3 rounded-2xl border border-border/70 bg-background/80 px-4 py-3 text-xs font-bold uppercase tracking-[0.1em] text-muted-foreground;
+    box-shadow: 0 18px 45px -24px hsl(var(--foreground) / 0.5);
+    backdrop-filter: blur(18px);
   }
 
   .ai-section-label { @apply mb-4 text-sm font-semibold uppercase tracking-[0.22em] text-primary; }

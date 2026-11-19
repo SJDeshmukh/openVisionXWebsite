@@ -1,37 +1,30 @@
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
+import { BrainCircuit, Bus, ChevronDown, Fingerprint, Menu, ScanFace, X } from "lucide-react";
 import ThemeToggle from "@/components/ThemeToggle";
 
 const links = [
-  { label: "Platform", href: "#platform" },
-  { label: "Solutions", href: "#solutions" },
   { label: "Intelligence", href: "#intelligence" },
   { label: "Architecture", href: "#architecture" },
   { label: "Use cases", href: "#use-cases" },
 ];
 
+const products = [
+  { label: "AttendX", detail: "AI attendance", href: "#solutions", icon: ScanFace },
+  { label: "RouteX", detail: "Mobility intelligence", href: "#solutions", icon: Bus },
+  { label: "TapInX", detail: "Touchless access", href: "#solutions", icon: Fingerprint },
+];
+
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("platform");
+  const [productsOpen, setProductsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const sections = links
-      .map(({ href }) => document.getElementById(href.slice(1)))
-      .filter((section): section is HTMLElement => section !== null);
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-        if (visible) setActiveSection(visible.target.id);
-      },
-      { rootMargin: "-25% 0px -60%", threshold: [0, 0.2, 0.5] },
-    );
-
-    sections.forEach((section) => observer.observe(section));
-    return () => observer.disconnect();
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   useEffect(() => {
@@ -40,94 +33,46 @@ export default function Navbar() {
   }, [mobileOpen]);
 
   return (
-    <motion.nav
-      initial={{ opacity: 0, y: -20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: 0.2 }}
-      aria-label="Primary navigation"
-      className="fixed inset-x-0 top-0 z-50 px-4 sm:px-6 lg:px-10"
-    >
-      <div className="mx-auto mt-4 max-w-7xl">
-        <div className="nav-shell relative flex h-16 items-center justify-between px-3 sm:px-4">
-          <a href="#platform" className="group flex items-center gap-3 rounded-xl px-2 py-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring" aria-label="OpenVisionX home">
-            <div className="h-9 w-9 overflow-hidden rounded-xl border border-border/60 bg-card p-1 shadow-sm transition-transform group-hover:scale-105">
-              <img src="/openVisionXLogo.png" alt="OpenVisionX logo" className="w-full h-full object-contain" />
-            </div>
-            <div className="leading-none">
-              <span className="block font-display text-base font-bold tracking-tight text-foreground sm:text-lg">OpenVisionX</span>
-              <span className="mt-1 hidden text-[9px] font-semibold uppercase tracking-[0.24em] text-muted-foreground sm:block">Vision intelligence</span>
-            </div>
-          </a>
+    <motion.nav initial={{ opacity: 0, y: -16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} aria-label="Primary navigation" className="fixed inset-x-0 top-0 z-50 px-3 sm:px-6">
+      <div className={`signature-nav mx-auto mt-3 max-w-[1380px] ${scrolled ? "signature-nav-scrolled" : ""}`}>
+        <a href="#platform" className="group flex items-center gap-3 rounded-2xl px-2 py-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring" aria-label="OpenVisionX home">
+          <div className="brand-mark"><img src="/openVisionXLogo.png" alt="" className="h-full w-full object-contain" /></div>
+          <div><span className="block font-display text-[1.05rem] font-bold tracking-[-0.04em] text-foreground">OpenVisionX</span><span className="hidden text-[0.62rem] font-bold uppercase tracking-[0.22em] text-muted-foreground sm:block">Physical intelligence</span></div>
+        </a>
 
-          <div className="hidden items-center rounded-xl border border-border/50 bg-muted/35 p-1 lg:flex">
-            {links.map((item) => {
-              const isActive = activeSection === item.href.slice(1);
-              return (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  aria-current={isActive ? "page" : undefined}
-                  className={`relative rounded-lg px-3.5 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${isActive ? "text-foreground" : "text-muted-foreground hover:text-foreground"}`}
-                >
-                  {isActive && (
-                    <motion.span
-                      layoutId="active-nav"
-                      className="absolute inset-0 rounded-lg border border-border/60 bg-background shadow-sm"
-                      transition={{ type: "spring", stiffness: 350, damping: 30 }}
-                    />
-                  )}
-                  <span className="relative z-10">{item.label}</span>
-                </a>
-              );
-            })}
+        <div className="hidden items-center gap-1 lg:flex">
+          <div className="relative" onMouseEnter={() => setProductsOpen(true)} onMouseLeave={() => setProductsOpen(false)}>
+            <button type="button" onClick={() => setProductsOpen((value) => !value)} aria-expanded={productsOpen} className="signature-nav-link">Products <ChevronDown className={`h-3.5 w-3.5 transition-transform ${productsOpen ? "rotate-180" : ""}`} /></button>
+            <AnimatePresence>
+              {productsOpen && (
+                <motion.div initial={{ opacity: 0, y: 8, scale: 0.98 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 8, scale: 0.98 }} className="product-menu">
+                  <div className="mb-3 flex items-center gap-2 px-2 text-xs font-bold uppercase tracking-[0.18em] text-muted-foreground"><BrainCircuit className="h-4 w-4 text-primary" />Connected product suite</div>
+                  {products.map((product) => <a key={product.label} href={product.href} className="product-menu-item" onClick={() => setProductsOpen(false)}><span className="flex h-10 w-10 items-center justify-center rounded-xl border border-border/70 bg-background/80"><product.icon className="h-5 w-5 text-primary" /></span><span><strong className="block font-display text-sm text-foreground">{product.label}</strong><span className="text-xs text-muted-foreground">{product.detail}</span></span></a>)}
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
-
-          <div className="flex items-center gap-2">
-            <ThemeToggle />
-            <a href="#contact" className="hidden h-10 items-center gap-1.5 rounded-xl bg-foreground px-4 text-sm font-semibold text-background transition-transform hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:inline-flex">
-              Request demo
-            </a>
-            <button
-              type="button"
-              className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-border/70 bg-background/70 text-foreground transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring lg:hidden"
-              aria-label={mobileOpen ? "Close menu" : "Open menu"}
-              aria-expanded={mobileOpen}
-              aria-controls="mobile-navigation"
-              onClick={() => setMobileOpen((v) => !v)}
-            >
-              {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-            </button>
-          </div>
-
-          <AnimatePresence>
-            {mobileOpen && (
-              <motion.div
-                initial={{ opacity: 0, y: -8 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -8 }}
-                transition={{ duration: 0.2 }}
-                id="mobile-navigation"
-                className="absolute left-0 right-0 top-full mt-2 lg:hidden"
-              >
-                <div className="nav-shell overflow-hidden p-2">
-                  {links.map((item) => (
-                    <a
-                      key={item.label}
-                      href={item.href}
-                      onClick={() => setMobileOpen(false)}
-                      className={`flex items-center justify-between rounded-xl px-4 py-3 text-sm font-semibold transition-colors ${activeSection === item.href.slice(1) ? "bg-primary/10 text-primary" : "text-foreground hover:bg-muted"}`}
-                    >
-                      {item.label}
-                    </a>
-                  ))}
-                  <a href="#contact" onClick={() => setMobileOpen(false)} className="mt-2 flex items-center justify-center gap-2 rounded-xl bg-foreground px-4 py-3 text-sm font-semibold text-background sm:hidden">
-                    Request demo
-                  </a>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
+          {links.map((item) => <a key={item.label} href={item.href} className="signature-nav-link">{item.label}</a>)}
         </div>
+
+        <div className="flex items-center gap-2">
+          <div className="hidden items-center gap-2 rounded-full border border-emerald-400/20 bg-emerald-400/5 px-3 py-2 text-[0.68rem] font-bold uppercase tracking-[0.16em] text-emerald-500 xl:flex"><span className="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_10px_rgb(52_211_153)]" />AI systems online</div>
+          <ThemeToggle />
+          <a href="#contact" className="nav-demo-button hidden sm:inline-flex">Book a private demo</a>
+          <button type="button" className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-border/70 bg-background/70 text-foreground lg:hidden" aria-label={mobileOpen ? "Close menu" : "Open menu"} aria-expanded={mobileOpen} onClick={() => setMobileOpen((value) => !value)}>{mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}</button>
+        </div>
+
+        <AnimatePresence>
+          {mobileOpen && (
+            <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }} className="mobile-signature-menu">
+              <p className="px-4 pb-2 pt-3 text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground">Products</p>
+              {products.map((product) => <a key={product.label} href={product.href} onClick={() => setMobileOpen(false)} className="mobile-signature-link"><product.icon className="h-4 w-4 text-primary" />{product.label}<span>{product.detail}</span></a>)}
+              <div className="my-2 h-px bg-border/60" />
+              {links.map((item) => <a key={item.label} href={item.href} onClick={() => setMobileOpen(false)} className="mobile-signature-link">{item.label}</a>)}
+              <a href="#contact" onClick={() => setMobileOpen(false)} className="nav-demo-button mt-3 flex sm:hidden">Book a private demo</a>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </motion.nav>
   );
