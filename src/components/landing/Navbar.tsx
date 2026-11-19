@@ -10,9 +10,9 @@ const links = [
 ];
 
 const products = [
+  { label: "TapInX", detail: "Touchless access", href: "#solutions", icon: Fingerprint },
   { label: "AttendX", detail: "AI attendance", href: "#solutions", icon: ScanFace },
   { label: "RouteX", detail: "Mobility intelligence", href: "#solutions", icon: Bus },
-  { label: "TapInX", detail: "Touchless access", href: "#solutions", icon: Fingerprint },
 ];
 
 export default function Navbar() {

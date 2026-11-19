@@ -6,9 +6,9 @@ import {
 } from "lucide-react";
 
 const products = [
-  { name: "AttendX", eyebrow: "AI attendance", description: "Group-based facial attendance designed for classrooms, institutions and distributed teams.", icon: ScanFace, logo: "/attendx-logo.svg", media: "/school.gif", mediaAlt: "AI-assisted classroom attendance visualization", points: ["Group photo recognition", "Classroom-scale workflows", "Central attendance visibility"], tone: "cyan" },
-  { name: "RouteX", eyebrow: "Intelligent mobility", description: "A live operations layer for routes, vehicles and the people moving through your network.", icon: Bus, logo: "/routex-logo.svg", media: "/bus_track.gif", mediaAlt: "Live bus and route tracking visualization", points: ["Live fleet monitoring", "Route and stop management", "Operational alerts"], tone: "violet" },
   { name: "TapInX", eyebrow: "Secure access", description: "Touchless identity and access workflows that connect entry events to one command layer.", icon: Fingerprint, logo: "/tapinx-logo.svg", media: "/security.gif", mediaAlt: "Secure identity verification visualization", points: ["Identity verification", "Entry event visibility", "Unified access records"], tone: "blue" },
+  { name: "AttendX", eyebrow: "AI attendance", description: "Group-based facial attendance designed for classrooms, institutions and distributed teams.", icon: ScanFace, logo: "/attendx-logo.svg", media: "/school.gif", mediaAlt: "AI-assisted classroom attendance visualization", points: ["Group photo recognition", "Classroom-scale workflows", "Central attendance visibility"], tone: "cyan" },
+  { name: "RouteX", eyebrow: "Intelligent mobility", description: "A live operations layer for routes, vehicles and the people moving through your network.", icon: Bus, logo: "/routex-logo.svg", media: "/mobile-tracking.gif", mediaAlt: "Live route and location tracking visualization", points: ["Live fleet monitoring", "Route and stop management", "Operational alerts"], tone: "violet" },
 ];
 
 const useCases = [
