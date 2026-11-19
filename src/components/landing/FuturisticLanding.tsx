@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import {
   Activity, BrainCircuit, Building2, Bus, CheckCircle2, Cpu, Database, Eye,
-  Fingerprint, GraduationCap, Layers3, MapPinned, Network, Radar, ScanFace,
+  Fingerprint, GraduationCap, MapPinned, Network, Radar, ScanFace,
   ShieldCheck, Sparkles, Users, Workflow,
 } from "lucide-react";
 
@@ -22,6 +22,16 @@ const architecture = [
   { icon: BrainCircuit, label: "Understand", text: "Vision AI and identity intelligence" },
   { icon: Workflow, label: "Orchestrate", text: "Rules, alerts and connected workflows" },
   { icon: Activity, label: "Act", text: "Live command and operational response" },
+];
+
+const architectureStages = [
+  { label: "People & devices", detail: "Identity and operational signals enter the platform.", media: "/user.gif" },
+  { label: "Visual capture", detail: "Cameras and edge inputs observe real-world events.", media: "/face1.gif" },
+  { label: "AI inference", detail: "Vision models interpret identity, presence and context.", media: "/ai_engine.gif" },
+  { label: "Cloud orchestration", detail: "Secure services connect data and platform workflows.", media: "/cloud2.gif" },
+  { label: "Command dashboard", detail: "Teams receive a unified operational view.", media: "/dashboard.gif" },
+  { label: "Mobile operations", detail: "Live information stays available on the move.", media: "/mobile.gif" },
+  { label: "Action & insight", detail: "Events become alerts, decisions and coordinated action.", media: "/real_time.gif" },
 ];
 
 const fadeUp = { initial: { opacity: 0, y: 28 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, margin: "-80px" }, transition: { duration: 0.7 } };
@@ -123,11 +133,22 @@ export default function FuturisticLanding() {
 
       <section id="architecture" className="section-padding relative overflow-hidden py-28 sm:py-36">
         <div className="ai-grid opacity-40" />
-        <div className="relative mx-auto max-w-7xl">
+        <div className="relative mx-auto max-w-[1380px]">
           <motion.div {...fadeUp} className="mx-auto max-w-3xl text-center"><p className="ai-section-label">Built to connect</p><h2 className="ai-section-title">A modular architecture for real-world AI.</h2><p className="ai-section-copy mx-auto">Connect edge devices, visual inputs and operational data to a platform designed around live institutional workflows.</p></motion.div>
-          <motion.div {...fadeUp} className="mt-16 grid items-center gap-4 md:grid-cols-[1fr_auto_1fr_auto_1fr]">
-            {[{ icon: Eye, title: "Edge and inputs", text: "Cameras, access points and mobility signals" }, { icon: BrainCircuit, title: "OpenVision AI", text: "Recognition, context and event intelligence" }, { icon: Layers3, title: "Command layer", text: "Dashboards, alerts and connected workflows" }].map((item, index) => <div key={item.title} className="contents"><div className="ai-architecture-card"><item.icon className="h-7 w-7 text-primary" /><h3 className="mt-5 font-display text-xl font-semibold text-foreground">{item.title}</h3><p className="mt-2 text-sm leading-6 text-muted-foreground">{item.text}</p></div>{index < 2 && <div className="mx-auto h-px w-12 bg-gradient-to-r from-transparent via-primary to-transparent md:h-12 md:w-px md:bg-gradient-to-b" />}</div>)}
+          <motion.div {...fadeUp} className="architecture-flow mt-16">
+            <div className="architecture-line" />
+            <div className="architecture-track">
+              {architectureStages.map((stage, index) => (
+                <motion.article key={stage.label} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.4 }} transition={{ duration: 0.55, delay: index * 0.07 }} className="architecture-stage">
+                  <div className="architecture-stage-media"><img src={stage.media} alt={`${stage.label} architecture stage`} className="h-full w-full object-cover" loading="lazy" decoding="async" /><div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" /></div>
+                  <div className="architecture-node"><span>{String(index + 1).padStart(2, "0")}</span></div>
+                  <h3 className="mt-5 font-display text-lg font-bold tracking-[-0.03em] text-foreground">{stage.label}</h3>
+                  <p className="mt-2 text-sm leading-6 text-muted-foreground">{stage.detail}</p>
+                </motion.article>
+              ))}
+            </div>
           </motion.div>
+          <motion.div {...fadeUp} className="mt-8 flex flex-wrap justify-center gap-2">{["Edge + cloud", "Live event processing", "Connected products", "Operational visibility"].map((item) => <span key={item} className="ai-chip">{item}</span>)}</motion.div>
         </div>
       </section>
 
