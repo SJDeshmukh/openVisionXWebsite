@@ -11,7 +11,7 @@ const links = [
 
 const products = [
   { label: "TapInX", detail: "Touchless access", href: "#products", icon: Fingerprint },
-  { label: "AttendX", detail: "AI attendance", href: "#products", icon: ScanFace },
+  { label: "AttendX", detail: "AI attendance", href: "/ai-attendance-system.html", icon: ScanFace },
   { label: "RouteX", detail: "Mobility intelligence", href: "#products", icon: Bus },
 ];
 

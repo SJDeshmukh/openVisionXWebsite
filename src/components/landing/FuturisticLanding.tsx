@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
-import { Activity, BrainCircuit, Building2, Check, Eye, GraduationCap, Layers3, MapPinned, Users } from "lucide-react";
+import { Activity, BrainCircuit, Building2, Camera, Check, ClipboardCheck, Eye, GraduationCap, Layers3, MapPinned, ShieldCheck, Users } from "lucide-react";
 
 const products = [
   { name: "TapInX", number: "01", eyebrow: "Identity & access", statement: "Every entry becomes a trusted event.", description: "A touchless identity layer that verifies access and brings every entry event into one operational view.", logo: "/tapinx-logo.svg", media: "/face1.gif", points: ["Identity verification", "Access event visibility", "Unified entry records"], accent: "#13d9ff" },
@@ -20,6 +20,17 @@ const useCases = [
   { icon: GraduationCap, title: "Education", text: "Connect attendance, campus access and transport into one daily operating picture.", media: "/bus_track.gif", alt: "Real-time student transport and campus mobility" },
   { icon: Building2, title: "Enterprise", text: "Coordinate workforce identity, facilities and mobility without fragmented tools.", media: "/corporate.gif", alt: "Animated connected enterprise operations" },
   { icon: Users, title: "Institutions", text: "Understand people, movement and critical events while they are happening.", media: "/future.gif", alt: "Real-time institutional command and analytics environment" },
+];
+const attendanceCapabilities = [
+  { icon: Camera, title: "AI-assisted recognition", text: "Capture attendance from visual inputs instead of relying only on manual registers or individual check-ins." },
+  { icon: Users, title: "Designed for groups", text: "Support classroom and institutional workflows where many people need to be recorded efficiently." },
+  { icon: ClipboardCheck, title: "Central attendance records", text: "Give authorized teams one operational view of attendance events across connected locations." },
+  { icon: ShieldCheck, title: "Connected identity workflows", text: "Link attendance with the broader OpenVisionX identity and access ecosystem." },
+];
+const attendanceFaqs = [
+  { question: "What is an AI attendance system?", answer: "An AI attendance system uses computer vision and identity workflows to assist with recording presence, organizing attendance events and reducing repetitive manual entry." },
+  { question: "Can AttendX support schools and institutions?", answer: "AttendX is designed for classrooms, campuses, institutions and distributed teams that need centralized attendance visibility." },
+  { question: "How is AttendX different from a biometric attendance machine?", answer: "AttendX is built around visual, group-oriented workflows and connects attendance information with a wider operational platform instead of functioning only as a standalone check-in device." },
 ];
 const reveal = { initial: { opacity: 0, y: 24 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, margin: "-80px" }, transition: { duration: 0.65 } };
 
@@ -55,8 +66,14 @@ export default function FuturisticLanding() {
     <section id="products" className="section-padding ovx-section"><div className="mx-auto max-w-[1440px]">
       <motion.div {...reveal} className="ovx-section-intro"><span className="ovx-index">01 / Products</span><h2>Three products.<br /><em>One operational brain.</em></h2><p>Start with the problem in front of you. Connect the system as your operations grow.</p></motion.div>
       <div className="ovx-product-experience"><div className="ovx-product-tabs" role="tablist" aria-label="OpenVisionX products">{products.map((item, index) => <button key={item.name} role="tab" aria-selected={activeProduct === index} onClick={() => setActiveProduct(index)} className={activeProduct === index ? "active" : ""}><span>{item.number}</span><img src={item.logo} alt="" /><strong>{item.name}</strong><small>{item.eyebrow}</small></button>)}</div>
-        <AnimatePresence mode="wait"><motion.article key={product.name} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: .35 }} className="ovx-product-panel" style={{ "--product-accent": product.accent } as React.CSSProperties}><div className="ovx-product-copy"><div className="ovx-product-logo"><img src={product.logo} alt={`${product.name} logo`} /></div><span>{product.eyebrow}</span><h3>{product.statement}</h3><p>{product.description}</p><ul>{product.points.map(point => <li key={point}><Check />{point}</li>)}</ul></div><div className="ovx-product-media"><img src={product.media} alt={`${product.name} product experience`} /><div className="ovx-media-status"><span className="ovx-signal" />Live intelligence</div><div className="ovx-media-caption"><span>{product.number}</span><strong>{product.name}</strong></div></div></motion.article></AnimatePresence>
+        <AnimatePresence mode="wait"><motion.article key={product.name} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: .35 }} className="ovx-product-panel" style={{ "--product-accent": product.accent } as React.CSSProperties}><div className="ovx-product-copy"><div className="ovx-product-logo"><img src={product.logo} alt={`${product.name} logo`} /></div><span>{product.eyebrow}</span><h3>{product.statement}</h3><p>{product.description}</p><ul>{product.points.map(point => <li key={point}><Check />{point}</li>)}</ul>{product.name === "AttendX" && <a className="ovx-product-detail-link" href="/ai-attendance-system.html">Explore the AttendX AI attendance system</a>}</div><div className="ovx-product-media"><img src={product.media} alt={`${product.name} product experience`} /><div className="ovx-media-status"><span className="ovx-signal" />Live intelligence</div><div className="ovx-media-caption"><span>{product.number}</span><strong>{product.name}</strong></div></div></motion.article></AnimatePresence>
       </div>
+    </div></section>
+
+    <section id="attendance-system" className="section-padding ovx-section ovx-attendance-section"><div className="mx-auto max-w-[1440px]">
+      <motion.div {...reveal} className="ovx-attendance-intro"><div><span className="ovx-index">AttendX / AI attendance system</span><h2>Attendance software built for real classrooms and institutions.</h2></div><p>AttendX is an AI-powered attendance system from OpenVisionX. It combines computer vision, group-oriented capture and centralized attendance records to help schools, colleges, campuses and organizations replace fragmented manual workflows.</p></motion.div>
+      <div className="ovx-attendance-grid">{attendanceCapabilities.map((item, index) => <motion.article {...reveal} transition={{ delay: index * .07 }} key={item.title}><item.icon /><h3>{item.title}</h3><p>{item.text}</p></motion.article>)}</div>
+      <div className="ovx-attendance-faq"><div><span className="ovx-index">Common questions</span><h2>About AI attendance management</h2><a href="/ai-attendance-system.html" className="ovx-text-link px-0">Read the complete AttendX overview</a></div><div>{attendanceFaqs.map(item => <details key={item.question}><summary>{item.question}</summary><p>{item.answer}</p></details>)}</div></div>
     </div></section>
 
     <section id="intelligence" className="section-padding ovx-section ovx-command-section"><div className="mx-auto max-w-[1440px]">
