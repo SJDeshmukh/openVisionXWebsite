@@ -311,9 +311,23 @@
   .architecture-orbit img { @apply h-full w-full rounded-full object-cover; filter: saturate(0.85) contrast(1.08); }
   .architecture-orbit-pulse { @apply pointer-events-none absolute inset-[-8px] rounded-full border border-primary/30; }
   .architecture-step-number { @apply absolute -bottom-2 left-1/2 flex h-7 w-7 -translate-x-1/2 items-center justify-center rounded-full border border-primary/50 bg-background font-mono text-[0.6rem] font-bold text-primary; box-shadow: 0 0 15px hsl(var(--primary) / 0.35); }
-  .architecture-connector-wrap { @apply absolute -right-10 top-0 hidden h-24 w-10 items-center 2xl:flex; }
+  .architecture-connector-wrap { @apply absolute -right-10 top-0 hidden h-24 w-10 items-center; }
   .architecture-connector { @apply relative h-[2px] w-full origin-left overflow-hidden; background: linear-gradient(90deg, hsl(var(--glow-blue) / 0.6), hsl(var(--glow-purple) / 0.6)); }
   .architecture-connector span { @apply absolute -top-[3px] h-2 w-2 rounded-full bg-primary; box-shadow: 0 0 12px hsl(var(--primary)); }
+
+  @media (min-width: 640px) {
+    .architecture-connector-wrap { display: flex; }
+    .architecture-sequence > div:nth-child(2n) .architecture-connector-wrap { display: none; }
+  }
+
+  @media (min-width: 1024px) {
+    .architecture-sequence > div:nth-child(2n) .architecture-connector-wrap { display: flex; }
+    .architecture-sequence > div:nth-child(4n) .architecture-connector-wrap { display: none; }
+  }
+
+  @media (min-width: 1536px) {
+    .architecture-sequence > div:nth-child(4n) .architecture-connector-wrap { display: flex; }
+  }
 
   .ai-showcase-grid {
     @apply grid items-center gap-12 overflow-hidden rounded-[2rem] border border-border/70 p-7 sm:p-10 lg:grid-cols-[.78fr_1.22fr] lg:p-14;
