@@ -58,7 +58,6 @@ export default function Navbar() {
         <div className="flex items-center gap-2">
           <div className="hidden items-center gap-2 rounded-full border border-emerald-400/20 bg-emerald-400/5 px-3 py-2 text-[0.68rem] font-bold uppercase tracking-[0.16em] text-emerald-500 xl:flex"><span className="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_10px_rgb(52_211_153)]" />AI systems online</div>
           <ThemeToggle />
-          <a href="#contact" className="nav-demo-button hidden sm:inline-flex">Book a private demo</a>
           <button type="button" className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-border/70 bg-background/70 text-foreground lg:hidden" aria-label={mobileOpen ? "Close menu" : "Open menu"} aria-expanded={mobileOpen} onClick={() => setMobileOpen((value) => !value)}>{mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}</button>
         </div>
 
@@ -69,7 +68,6 @@ export default function Navbar() {
               {products.map((product) => <a key={product.label} href={product.href} onClick={() => setMobileOpen(false)} className="mobile-signature-link"><product.icon className="h-4 w-4 text-primary" />{product.label}<span>{product.detail}</span></a>)}
               <div className="my-2 h-px bg-border/60" />
               {links.map((item) => <a key={item.label} href={item.href} onClick={() => setMobileOpen(false)} className="mobile-signature-link">{item.label}</a>)}
-              <a href="#contact" onClick={() => setMobileOpen(false)} className="nav-demo-button mt-3 flex sm:hidden">Book a private demo</a>
             </motion.div>
           )}
         </AnimatePresence>

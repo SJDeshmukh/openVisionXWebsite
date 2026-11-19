@@ -1,11 +1,11 @@
 import { useRef, useState } from "react";
 import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
-import { Activity, BrainCircuit, Building2, Bus, Check, Eye, Fingerprint, GraduationCap, Layers3, MapPinned, ScanFace, Users } from "lucide-react";
+import { Activity, BrainCircuit, Building2, Check, Eye, GraduationCap, Layers3, MapPinned, Users } from "lucide-react";
 
 const products = [
-  { name: "TapInX", number: "01", eyebrow: "Identity & access", statement: "Every entry becomes a trusted event.", description: "A touchless identity layer that verifies access and brings every entry event into one operational view.", icon: Fingerprint, logo: "/tapinx-logo.svg", media: "/security.gif", points: ["Identity verification", "Access event visibility", "Unified entry records"], accent: "#13d9ff" },
-  { name: "AttendX", number: "02", eyebrow: "Vision attendance", statement: "Attendance without the attendance line.", description: "Group-based facial attendance for classrooms, institutions and distributed teams—built for real environments.", icon: ScanFace, logo: "/attendx-logo.svg", media: "/school.gif", points: ["Group recognition", "Classroom workflows", "Central attendance view"], accent: "#7c78ff" },
-  { name: "RouteX", number: "03", eyebrow: "Mobility intelligence", statement: "Know what is moving. And what is not.", description: "Live operational context for routes, vehicles and the people moving through your network.", icon: Bus, logo: "/routex-logo.svg", media: "/mobile-tracking.gif", points: ["Fleet monitoring", "Route management", "Operational alerts"], accent: "#c751ff" },
+  { name: "TapInX", number: "01", eyebrow: "Identity & access", statement: "Every entry becomes a trusted event.", description: "A touchless identity layer that verifies access and brings every entry event into one operational view.", logo: "/tapinx-logo.svg", media: "/security.gif", points: ["Identity verification", "Access event visibility", "Unified entry records"], accent: "#13d9ff" },
+  { name: "AttendX", number: "02", eyebrow: "Vision attendance", statement: "Attendance without the attendance line.", description: "Group-based facial attendance for classrooms, institutions and distributed teams—built for real environments.", logo: "/attendX.png", media: "/face1.gif", points: ["Group recognition", "Classroom workflows", "Central attendance view"], accent: "#7c78ff" },
+  { name: "RouteX", number: "03", eyebrow: "Mobility intelligence", statement: "Know what is moving. And what is not.", description: "Live operational context for routes, vehicles and the people moving through your network.", logo: "/routex-logo.png", media: "/mobile-tracking.gif", points: ["Fleet monitoring", "Route management", "Operational alerts"], accent: "#c751ff" },
 ];
 const architectureStages = [
   ["People & devices", "Signals enter", "/user.gif"], ["Visual capture", "Events observed", "/face1.gif"], ["AI inference", "Context understood", "/ai_engine.gif"], ["Cloud orchestration", "Data connected", "/cloud2.gif"], ["Command view", "Operations unified", "/dashboard.gif"], ["Mobile operations", "Teams informed", "/mobile.gif"], ["Action & insight", "Decisions activated", "/real_time.gif"],
@@ -29,13 +29,7 @@ export default function FuturisticLanding() {
     <section ref={heroRef} id="platform" className="ovx-hero section-padding"><div className="ovx-noise" /><div className="ovx-grid" />
       <motion.div className="ovx-symbol-stage" style={{ opacity: symbolOpacity, scale: symbolScale, y: symbolY }} aria-hidden="true">
         <img src="/hero-circuit.gif" alt="" className="ovx-symbol-texture" />
-        <div className="ovx-symbol-orbit ovx-symbol-orbit-one"><i /></div>
-        <div className="ovx-symbol-orbit ovx-symbol-orbit-two"><i /></div>
-        <div className="ovx-symbol-orbit ovx-symbol-orbit-three"><i /></div>
-        <div className="ovx-symbol-core"><span /><img src="/openVisionXLogo.png" alt="" /></div>
-        <div className="ovx-symbol-label ovx-symbol-label-a"><Fingerprint />Identity verified</div>
-        <div className="ovx-symbol-label ovx-symbol-label-b"><Bus />Mobility tracking</div>
-        <div className="ovx-symbol-label ovx-symbol-label-c"><ScanFace />Vision active</div>
+        <div className="ovx-symbol-core"><img src="/logo-eye.svg" alt="" /></div>
       </motion.div>
       <div className="relative z-10 mx-auto max-w-[1440px] pt-32 sm:pt-40">
         <div className="grid min-h-[calc(100svh-10rem)] items-center gap-12 pb-16 lg:grid-cols-[1.03fr_.97fr] lg:gap-16">
@@ -43,7 +37,7 @@ export default function FuturisticLanding() {
             <div className="ovx-eyebrow"><span>OpenVision intelligence layer</span><span className="ovx-live">Live</span></div>
             <h1 className="ovx-hero-title">See the world.<br /><span>Run it better.</span></h1>
             <p className="ovx-hero-copy">One AI operations platform for identity, attendance and mobility—turning activity in the physical world into decisions your teams can act on.</p>
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row"><a href="#contact" className="ovx-primary-button">Request a private demo</a><a href="#products" className="ovx-text-link">Explore the platform</a></div>
+            <div className="mt-9 flex"><a href="#products" className="ovx-text-link px-0">Explore the platform</a></div>
             <div className="ovx-capability-row">{["Vision", "Identity", "Mobility"].map((item, i) => <div key={item}><span>0{i + 1}</span>{item}</div>)}</div>
           </motion.div>
           <div className="hidden lg:block" />
@@ -54,7 +48,7 @@ export default function FuturisticLanding() {
 
     <section id="products" className="section-padding ovx-section"><div className="mx-auto max-w-[1440px]">
       <motion.div {...reveal} className="ovx-section-intro"><span className="ovx-index">01 / Products</span><h2>Three products.<br /><em>One operational brain.</em></h2><p>Start with the problem in front of you. Connect the system as your operations grow.</p></motion.div>
-      <div className="ovx-product-experience"><div className="ovx-product-tabs" role="tablist" aria-label="OpenVisionX products">{products.map((item, index) => <button key={item.name} role="tab" aria-selected={activeProduct === index} onClick={() => setActiveProduct(index)} className={activeProduct === index ? "active" : ""}><span>{item.number}</span><item.icon /><strong>{item.name}</strong><small>{item.eyebrow}</small></button>)}</div>
+      <div className="ovx-product-experience"><div className="ovx-product-tabs" role="tablist" aria-label="OpenVisionX products">{products.map((item, index) => <button key={item.name} role="tab" aria-selected={activeProduct === index} onClick={() => setActiveProduct(index)} className={activeProduct === index ? "active" : ""}><span>{item.number}</span><img src={item.logo} alt="" /><strong>{item.name}</strong><small>{item.eyebrow}</small></button>)}</div>
         <AnimatePresence mode="wait"><motion.article key={product.name} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: .35 }} className="ovx-product-panel" style={{ "--product-accent": product.accent } as React.CSSProperties}><div className="ovx-product-copy"><div className="ovx-product-logo"><img src={product.logo} alt={`${product.name} logo`} /></div><span>{product.eyebrow}</span><h3>{product.statement}</h3><p>{product.description}</p><ul>{product.points.map(point => <li key={point}><Check />{point}</li>)}</ul></div><div className="ovx-product-media"><img src={product.media} alt={`${product.name} product experience`} /><div className="ovx-media-status"><span className="ovx-signal" />Live intelligence</div><div className="ovx-media-caption"><span>{product.number}</span><strong>{product.name}</strong></div></div></motion.article></AnimatePresence>
       </div>
     </div></section>
