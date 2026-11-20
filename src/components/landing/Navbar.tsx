@@ -4,6 +4,7 @@ import { BrainCircuit, Bus, ChevronDown, Fingerprint, Menu, ScanFace, X } from "
 import ThemeToggle from "@/components/ThemeToggle";
 
 const links = [
+  { label: "Businesses", href: "#businesses" },
   { label: "Intelligence", href: "#intelligence" },
   { label: "Architecture", href: "#architecture" },
   { label: "Use cases", href: "#use-cases" },
